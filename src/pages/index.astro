@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { homeStructuredData } from '../data/structured-data'
+
+import Hero from '../components/Hero.astro'
+import Services from '../components/Services.astro'
+import About from '../components/About.astro'
+import Locations from '../components/Locations.astro'
+
+const pageTitle = 'Dr. Victor Mol | Radiologista em Niterói — Ultrassonografia e Segunda Opinião'
+const pageDescription =
+  'Dr. Victor Mol, radiologista em Niterói: ultrassonografia geral e domiciliar, dermatológica, segunda opinião em exames de imagem e procedimentos especializados com diagnóstico claro e seguro.'
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  ogImage="/assets/Victor.png"
+  structuredData={homeStructuredData()}
+  preloadImages={['/assets/Victor.png']}
+>
+  <Hero />
+  <Services />
+  <About />
+  <Locations />
+</BaseLayout>

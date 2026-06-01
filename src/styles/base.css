@@ -1,0 +1,54 @@
+ /* ===================== RESET ===================== */
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ html { scroll-behavior: smooth; overflow-x: hidden; }
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  line-height: var(--lh-body);
+}
+
+p + p {
+  margin-top: var(--space-paragraph);
+}
+ a { text-decoration: none; color: inherit; }
+ img { display: block; max-width: 100%; }
+
+ /* ===================== TYPOGRAPHY HELPERS ===================== */
+ .font-display { font-family: var(--font-display); font-weight: 300; font-style: normal; }
+ .font-display-bold { font-family: var(--font-display); font-weight: 400; }
+
+ .layout-shell {
+   width: 100%;
+   max-width: var(--layout-max-width);
+   margin-inline: auto;
+   padding-inline: var(--layout-gutter);
+   box-sizing: border-box;
+ }
+
+ /* ===================== PAGE WRAPPER ===================== */
+ main.page {
+   display: flex;
+   flex-direction: column;
+   align-items: stretch;
+   gap: var(--section-stack-gap);
+   background: var(--color-background);
+   width: 100%;
+ }
+
+ .header {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  padding-top: var(--page-top-offset);
+  overflow: visible;
+}
+

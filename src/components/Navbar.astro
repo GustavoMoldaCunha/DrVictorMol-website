@@ -1,0 +1,135 @@
+---
+import WhatsAppCta from './WhatsAppCta.astro';
+import { SERVICES, serviceHref } from '../data/services';
+
+const home = import.meta.env.BASE_URL;
+const sectionHref = (id: string) => `${home}#${id}`;
+const servicesSectionHref = sectionHref('servicos');
+---
+
+<div class="navbar-fixed-wrap">
+    <div class="layout-shell navbar__stack">
+    <nav class="navbar" aria-label="Navegação principal">
+      <a href={home} class="navbar__logo motion-link" aria-label="Dr. Victor Mol - Página inicial">
+        <img
+          class="navbar__logo-icon"
+          src="/assets/LogoIconeClaro.svg"
+          alt="Logo ícone Dr. Victor Mol"
+        />
+        <img
+          class="navbar__logo-text"
+          src="/assets/LogoTextoClaro.webp"
+          alt="Dr. Victor Mol"
+        />
+      </a>
+
+      <div class="navbar__nav" role="menubar">
+        <div
+          class="navbar__dropdown"
+          data-navbar-dropdown
+        >
+          <a
+            href={servicesSectionHref}
+            class="navbar__dropdown-trigger motion-link"
+            role="menuitem"
+            aria-haspopup="true"
+            aria-expanded="false"
+            data-navbar-dropdown-trigger
+            id="navbar-services-trigger"
+          >
+            Serviços
+            <span class="navbar__dropdown-chevron" aria-hidden="true"></span>
+          </a>
+          <div
+            class="navbar__dropdown-panel"
+            role="menu"
+            aria-labelledby="navbar-services-trigger"
+            data-navbar-dropdown-panel
+          >
+            <ul class="navbar__dropdown-list">
+              {SERVICES.map((service) => (
+                <li>
+                  <a
+                    href={serviceHref(service.href, home)}
+                    class="navbar__dropdown-link"
+                    role="menuitem"
+                  >
+                    {service.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <a href={sectionHref('sobre')} class="navbar__nav-link motion-link" role="menuitem">Sobre mim</a>
+        <a href={sectionHref('locais')} class="navbar__nav-link motion-link" role="menuitem">Locais de Atendimento</a>
+      </div>
+
+      <div class="navbar__cta-wrap">
+        <WhatsAppCta variant="navbar" />
+      </div>
+
+      <button
+        class="navbar__hamburger"
+        id="hamburger-btn"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Abrir menu de navegação"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div
+        class="navbar__mobile-menu"
+        id="mobile-menu"
+        aria-label="Menu mobile"
+        aria-hidden="true"
+      >
+        <div class="navbar__accordion" data-navbar-accordion>
+          <button
+            type="button"
+            class="navbar__accordion-trigger"
+            aria-expanded="false"
+            aria-controls="navbar-mobile-services"
+            data-navbar-accordion-trigger
+            id="navbar-mobile-services-trigger"
+          >
+            Serviços
+            <span class="navbar__accordion-chevron" aria-hidden="true"></span>
+          </button>
+          <div
+            class="navbar__accordion-panel"
+            id="navbar-mobile-services"
+            role="region"
+            aria-labelledby="navbar-mobile-services-trigger"
+            data-navbar-accordion-panel
+          >
+            <div class="navbar__accordion-panel-inner">
+              <ul class="navbar__accordion-list">
+                {SERVICES.map((service) => (
+                  <li>
+                    <a href={serviceHref(service.href, home)} class="navbar__accordion-link">
+                      {service.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <a href={sectionHref('sobre')} class="navbar__mobile-link motion-link">Sobre mim</a>
+        <a href={sectionHref('locais')} class="navbar__mobile-link motion-link">Locais de Atendimento</a>
+        <WhatsAppCta variant="navbar" />
+      </div>
+    </nav>
+
+    <div
+      class="navbar__mobile-overlay"
+      id="mobile-menu-overlay"
+      aria-hidden="true"
+      hidden
+    ></div>
+    </div>
+  </div>

@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import '../styles/service-page.css'
+
+import ServicePageHero from '../components/service-page/ServicePageHero.astro'
+import ServiceInlineCta from '../components/service-page/ServiceInlineCta.astro'
+import ServiceFinalCta from '../components/service-page/ServiceFinalCta.astro'
+import { serviceStructuredData } from '../data/structured-data'
+
+const pageTitle = 'Ultrassonografia Domiciliar | Dr. Victor Mol'
+const pageDescription =
+  'Ultrassom domiciliar com estrutura completa para exames de ultrassonografia geral e dermatológica no conforto da sua casa. Agendamento personalizado com o Dr. Victor Mol.'
+const heroImage = '/assets/HeroUltrassomDomiciliar.png'
+
+const structuredData = serviceStructuredData({
+  pathname: '/ultrassonografia-domiciliar/',
+  name: 'Ultrassonografia Domiciliar',
+  description: pageDescription,
+  imagePath: heroImage,
+  breadcrumbLabel: 'Ultrassonografia Domiciliar',
+})
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageClass="page--service"
+  structuredData={structuredData}
+  ogImage={heroImage}
+  preloadImages={[heroImage]}
+>
+
+  <ServicePageHero
+    title="Ultrassonografia Domiciliar"
+    subtitle="Exames de ultrassom geral e dermatológico realizados em casa, com toda a estrutura necessária para diagnóstico de alta qualidade."
+    breadcrumbCurrent="Ultrassonografia Domiciliar"
+    imageSrc="/assets/HeroUltrassomDomiciliar.png"
+    imageAlt="Ultrassonografia domiciliar realizada pelo Dr. Victor Mol"
+    mediaClass="service-hero__media--edge-right service-hero__media--domiciliar"
+  />
+
+  <div class="service-page layout-shell">
+    <article class="service-article" itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="headline" content="Ultrassonografia Domiciliar" />
+
+      <section class="service-section" aria-labelledby="o-que-e-ultrassom-domiciliar" data-motion-stagger>
+        <h2 class="service-section__title" id="o-que-e-ultrassom-domiciliar" data-motion>
+          O Que É o Ultrassom Domiciliar?
+        </h2>
+        <p class="service-section__lead" data-motion>
+          O ultrassom domiciliar é uma opção valiosa para pacientes que enfrentam dificuldades de locomoção ou que preferem a comodidade de realizar seus exames em casa. Neste tipo de procedimento, levo toda a estrutura necessária para garantir um exame de alta qualidade, tornando o processo mais acessível e confortável.
+        </p>
+      </section>
+
+      <ServiceInlineCta
+        text="Quer realizar seu ultrassom em casa? Entre em contato e agende com orientação personalizada."
+      />
+
+      <section class="service-section" aria-labelledby="quais-exames-domicilio" data-motion-stagger>
+        <h2 class="service-section__title" id="quais-exames-domicilio" data-motion>
+          Quais Exames Podem Ser Feitos no Domicílio?
+        </h2>
+        <p data-motion>
+          No ambiente domiciliar, podem ser realizados exames de ultrassom geral e ultrassom dermatológico. Esses exames são adequados para o conforto do paciente e não comprometem a qualidade da avaliação diagnóstica. Assim, garantimos que a experiência do paciente seja tanto prática quanto eficiente.
+        </p>
+      </section>
+
+      <section class="service-section" aria-labelledby="exames-procedimentos-invasivos" data-motion-stagger>
+        <h2 class="service-section__title" id="exames-procedimentos-invasivos" data-motion>
+          Exames e Procedimentos Invasivos
+        </h2>
+        <aside class="service-callout" data-motion>
+          <p>
+            É importante ressaltar que existem exames que não podem ser realizados no domicílio, como aqueles que incluem procedimentos invasivos. Um exemplo é o Doppler peniano com injeção cavernosa, que necessita de um ambiente mais controlado e equipamento especializado para garantir a segurança e eficácia do procedimento.
+          </p>
+        </aside>
+      </section>
+
+      <section class="service-section" aria-labelledby="como-funciona-agendamento" data-motion-stagger>
+        <h2 class="service-section__title" id="como-funciona-agendamento" data-motion>
+          Como Funciona o Agendamento?
+        </h2>
+        <p data-motion>
+          Para agendar um ultrassom domiciliar, o paciente deve entrar em contato para que possamos entender suas necessidades específicas. A partir desta informação, organizamos a melhor logística para a realização do exame, sempre assegurando o conforto do paciente sem perder a qualidade diagnóstica que ele merece.
+        </p>
+      </section>
+    </article>
+  </div>
+
+  <ServiceFinalCta
+    title="Ultrassom no conforto da sua casa"
+    text="Agende o ultrassom domiciliar com o Dr. Victor Mol. Estrutura completa, laudo detalhado e atendimento pensado para a sua comodidade."
+  />
+</BaseLayout>

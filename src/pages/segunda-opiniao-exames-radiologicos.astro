@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import '../styles/service-page.css'
+
+import ServicePageHero from '../components/service-page/ServicePageHero.astro'
+import ServiceInlineCta from '../components/service-page/ServiceInlineCta.astro'
+import ServiceFinalCta from '../components/service-page/ServiceFinalCta.astro'
+import { serviceStructuredData } from '../data/structured-data'
+
+const pageTitle = 'Segunda Opinião de Exames Radiológicos | Dr. Victor Mol'
+const pageDescription =
+  'Segunda opinião especializada em exames de imagem com foco em neurorradiologia. Revisão criteriosa de RM, TC e exames especiais para diagnósticos mais seguros.'
+const heroImage = '/assets/HeroSegundaOpinião.png'
+
+const structuredData = serviceStructuredData({
+  pathname: '/segunda-opiniao-exames-radiologicos/',
+  name: 'Segunda Opinião de Exames Radiológicos',
+  description: pageDescription,
+  imagePath: heroImage,
+  breadcrumbLabel: 'Segunda Opinião de Exames Radiológicos',
+})
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageClass="page--service"
+  structuredData={structuredData}
+  ogImage={heroImage}
+  preloadImages={[heroImage]}
+>
+
+  <ServicePageHero
+    title="Segunda Opinião de Exames Radiológicos"
+    subtitle="Análise especializada de laudos e imagens para confirmar diagnósticos, esclarecer achados e orientar o melhor caminho de tratamento."
+    breadcrumbCurrent="Segunda Opinião"
+    imageSrc="/assets/HeroSegundaOpinião.png"
+    imageAlt="Segunda opinião em exames radiológicos realizada pelo Dr. Victor Mol"
+  />
+
+  <div class="service-page layout-shell">
+    <article class="service-article" itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="headline" content="Segunda Opinião de Exames Radiológicos" />
+
+      <section class="service-section" aria-labelledby="por-que-segunda-opiniao" data-motion-stagger>
+        <h2 class="service-section__title" id="por-que-segunda-opiniao" data-motion>
+          Por que buscar uma Segunda Opinião em Exames de Imagem?
+        </h2>
+        <p class="service-section__lead" data-motion>
+          Nem sempre um laudo consegue esclarecer todas as dúvidas de um paciente ou do seu médico.
+        </p>
+        <p data-motion>Uma segunda opinião especializada é essencial para:</p>
+        <ul class="service-list" data-motion>
+          <li>Confirmar ou corrigir diagnósticos</li>
+          <li>Esclarecer achados duvidosos</li>
+          <li>Evitar a repetição de exames invasivos ou dispendiosos</li>
+        </ul>
+        <aside class="service-callout" data-motion>
+          <p>
+            Uma nova análise criteriosa proporciona mais segurança e tranquilidade na tomada de decisão médica e evita procedimentos desnecessários, garantindo o melhor caminho para o seu tratamento.
+          </p>
+        </aside>
+      </section>
+
+      <ServiceInlineCta
+        text="Tem dúvidas sobre o resultado do seu exame? Uma segunda opinião pode trazer mais clareza."
+      />
+
+      <section class="service-section" aria-labelledby="expertise-neurorradiologia" data-motion-stagger>
+        <h2 class="service-section__title" id="expertise-neurorradiologia" data-motion>
+          Expertise em Neurorradiologia e Exames Especiais
+        </h2>
+        <p data-motion>
+          Minha atuação em segunda opinião de laudos é focada principalmente na neurorradiologia, área em que possuo vasta experiência.
+        </p>
+        <p data-motion>Realizo a análise criteriosa de exames como:</p>
+        <ul class="service-list" data-motion>
+          <li>
+            Ressonância magnética e tomografia computadorizada de crânio, órbitas, mastoides, sela turca e coluna vertebral
+          </li>
+          <li>Angiorressonância magnética e angiotomografia computadorizada do crânio e do pescoço</li>
+          <li>Exames especiais, como espectroscopia de prótons, fluxo liquórico, perfusão e tractografia</li>
+        </ul>
+        <p data-motion>
+          O objetivo é identificar detalhes relevantes que muitas vezes passam despercebidos, impactando diretamente o diagnóstico e o tratamento.
+        </p>
+      </section>
+
+      <section class="service-section" aria-labelledby="outras-especialidades" data-motion-stagger>
+        <h2 class="service-section__title" id="outras-especialidades" data-motion>
+          Segunda Opinião em Outras Especialidades de Imagem
+        </h2>
+        <p data-motion>Além da neurorradiologia, ofereço segunda opinião de:</p>
+        <ul class="service-list" data-motion>
+          <li>Ressonância magnética multiparamétrica da próstata</li>
+          <li>Ressonância magnética de outras partes do corpo</li>
+          <li>Tomografia computadorizada de outras partes do corpo</li>
+        </ul>
+        <p data-motion>
+          Caso tenha dúvidas sobre um exame diferente, entre em contato para saber se posso auxiliar no seu caso específico.
+        </p>
+      </section>
+
+      <section class="service-section" aria-labelledby="como-funciona" data-motion-stagger>
+        <h2 class="service-section__title" id="como-funciona" data-motion>
+          Como Funciona o Processo de Segunda Opinião?
+        </h2>
+        <ol class="service-list service-list--ordered" data-motion>
+          <li>
+            <p><strong>Contato inicial:</strong> O paciente solicita a segunda opinião.</p>
+          </li>
+          <li>
+            <p><strong>Videoconferência agendada:</strong> Realizo uma reunião online com o paciente para entender melhor suas queixas e o contexto clínico.</p>
+          </li>
+          <li>
+            <p><strong>Envio dos exames:</strong> O paciente fornece as imagens (DICOM) e o laudo original, respeitando as normas da LGPD (Lei Geral de Proteção de Dados), garantindo segurança e confidencialidade.</p>
+          </li>
+          <li>
+            <p><strong>Emissão do parecer complementar:</strong> Após análise detalhada, elaboro um novo laudo técnico que complementa o laudo original, adicionando informações relevantes.</p>
+          </li>
+        </ol>
+      </section>
+
+      <ServiceInlineCta
+        text="Pronto para dar o próximo passo? Agende uma conversa e envie seus exames com segurança."
+        buttonLabel="Solicitar segunda opinião"
+      />
+
+      <section class="service-section" aria-labelledby="vantagens" data-motion-stagger>
+        <h2 class="service-section__title" id="vantagens" data-motion>
+          Vantagens da Segunda Opinião Radiológica
+        </h2>
+        <ul class="service-list" data-motion>
+          <li>
+            Revisão por especialista experiente, habituado a identificar detalhes sutis em exames de alta complexidade
+          </li>
+          <li>Redução da necessidade de repetir exames desconfortáveis ou onerosos</li>
+          <li>Economia de tempo e custos, evitando entraves de planos de saúde</li>
+          <li>Potencial para mudar condutas médicas e otimizar o diagnóstico</li>
+        </ul>
+        <aside class="service-callout" data-motion>
+          <p>Se você tem dúvidas sobre seu exame, uma segunda opinião pode fazer toda a diferença!</p>
+        </aside>
+      </section>
+    </article>
+  </div>
+
+  <ServiceFinalCta
+    title="Garanta mais segurança na sua decisão médica"
+    text="Agende uma consulta para segunda opinião em exames radiológicos. Atendimento online, análise criteriosa e parecer técnico com total confidencialidade."
+  />
+</BaseLayout>

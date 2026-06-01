@@ -1,0 +1,27 @@
+---
+import { testimonials } from '../data/testimonials';
+---
+
+<div
+  class="testimonials__slider"
+  data-testimonials-slider
+  data-motion
+  aria-roledescription="carrossel"
+>
+  <div class="testimonials__viewport" aria-live="polite" aria-atomic="true">
+    {
+      testimonials.map((item, index) => (
+        <article
+          class:list={['testimonials__slide', { 'is-active': index === 0 }]}
+          data-testimonial-slide
+          aria-hidden={index !== 0 ? 'true' : 'false'}
+        >
+          <blockquote class="testimonials__quote">
+            &ldquo;{item.quote}&rdquo;
+          </blockquote>
+          <p class="testimonials__author">&mdash; {item.author}</p>
+        </article>
+      ))
+    }
+  </div>
+</div>

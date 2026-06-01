@@ -1,0 +1,971 @@
+/* ===================== ABOUT SECTION ===================== */
+.about {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    background: var(--color-background);
+  }
+
+  .about__title-wrap {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--sp-20);
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .about__title-wrap .about__title {
+    flex-shrink: 0;
+  }
+
+  .about__description-wrap {
+    display: flex;
+    gap: var(--sp-10);
+    align-items: flex-start;
+    padding: var(--sp-10);
+    flex: 1 1 440px;
+    max-width: 440px;
+    justify-content: flex-end;
+  }
+
+  .about__description {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: 400;
+    color: var(--color-text);
+    text-align: right;
+    flex: 1 1 auto;
+    min-width: 0;
+    line-height: var(--lh-body);
+  }
+
+  .about__logo-small {
+    width: 40px;
+    height: 40px;
+    padding-top: 7px;
+    transform: scaleY(-1) rotate(180deg);
+    object-fit: contain;
+    opacity: 1;
+    flex-shrink: 0;
+  }
+
+  .about__title,
+  .locations__title {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 700;
+    color: #142033;
+    line-height: normal;
+  }
+
+  .testimonials__title {
+    font-family: var(--font-display);
+    font-size: clamp(var(--fs-24), 4.5vw, var(--fs-34));
+    font-weight: 700;
+    color: #142033;
+    line-height: normal;
+  }
+
+  .about__infographic {
+    border-top: 1px solid var(--section-divider-color);
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: clamp(22px, 4vw, 36px);
+    padding: clamp(24px, 4vw, 40px) 0;
+    box-sizing: border-box;
+    --about-cards-stack-gap: clamp(14px, 2.2vw, 22px);
+  }
+
+  .about__connectors {
+    display: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .about__connector {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    height: 28px;
+  }
+
+  .about__connector__line {
+    display: block;
+    width: clamp(72px, 9vw, 149px);
+    height: 2px;
+    flex: 0 0 auto;
+    overflow: visible;
+  }
+
+  /* Encosta a linha na borda do círculo interno (14px), não no halo (28px) */
+  .about__connector--formacao .about__connector__line,
+  .about__connector--experiencia .about__connector__line {
+    margin-inline-end: -7px;
+  }
+
+  .about__connector--servico .about__connector__line,
+  .about__connector--reconhecimento .about__connector__line {
+    margin-inline-start: -7px;
+  }
+
+  .about__connector__dot {
+    position: relative;
+    flex: 0 0 28px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .about__connector__dot-outer {
+    display: block;
+    width: 28px;
+    height: 28px;
+    aspect-ratio: 1;
+  }
+
+  .about__connector__dot-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 14px;
+    height: 14px;
+    aspect-ratio: 1;
+  }
+
+  .about__cards {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: auto;
+    gap: var(--about-cards-stack-gap);
+    min-width: 0;
+    width: 100%;
+    --about-card-media: 100px;
+    --about-card-servico-media: 118px;
+    --about-card-formacao-media: clamp(128px, 38vw, 152px);
+    --about-card-pad: var(--sp-25);
+    --about-card-gap: 14px;
+  }
+
+  .about__doctor-stage {
+    width: 100%;
+    max-width: min(370px, 88vw);
+    margin-inline: auto;
+    flex-shrink: 0;
+    --about-doctor-radius: 28px;
+    --about-doctor-border: clamp(8px, 1.1vw, 12px);
+    --about-doctor-aspect: 370 / 556;
+    --about-doctor-object-position: center 14%;
+  }
+
+  .about__doctor-photo {
+    position: relative;
+    width: 100%;
+    margin-inline: auto;
+    box-sizing: border-box;
+    border: var(--about-doctor-border) solid var(--color-quaternary);
+    border-radius: var(--about-doctor-radius);
+    overflow: hidden;
+    background: #2a2a2a;
+    aspect-ratio: var(--about-doctor-aspect);
+  }
+
+  .about__doctor-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: var(--about-doctor-object-position);
+  }
+
+  .info-card {
+    position: relative;
+    background: var(--color-primary);
+    border-radius: 20px;
+    color: var(--color-background);
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .info-card--formacao,
+  .info-card--servico,
+  .info-card--experiencia,
+  .info-card--reconhecimento {
+    display: grid;
+    grid-template-columns: var(--about-card-media) minmax(0, 1fr);
+    gap: var(--about-card-gap);
+    align-items: center;
+    padding: var(--about-card-pad);
+    box-sizing: border-box;
+  }
+
+  .info-card--formacao {
+    grid-template-columns: var(--about-card-formacao-media) minmax(0, 1fr);
+  }
+
+  .info-card--formacao__logo {
+    width: var(--about-card-formacao-media);
+    height: var(--about-card-formacao-media);
+    flex-shrink: 0;
+    border-radius: 20px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about__cards .info-card .info-card__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .info-card__heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 2vw, var(--fs-24));
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1.2;
+    white-space: normal;
+    width: 100%;
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+
+  .info-card__body {
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    font-weight: 400;
+    line-height: var(--lh-snug);
+    letter-spacing: -0.01em;
+    width: 100%;
+    max-width: none;
+  }
+
+  .info-card--servico .info-card__text-block {
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .info-card--servico__image {
+    width: var(--about-card-servico-media);
+    height: var(--about-card-servico-media);
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  .info-card--servico__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .info-card--experiencia__number-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--about-card-media);
+    height: var(--about-card-media);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .info-card--experiencia__graphic {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .info-card--reconhecimento .info-card__text-block {
+    margin-right: 0;
+  }
+
+  .info-card--reconhecimento {
+    grid-template-columns: minmax(0, 1fr) var(--about-card-formacao-media);
+  }
+
+  .info-card--reconhecimento__logo {
+    width: var(--about-card-formacao-media);
+    height: var(--about-card-formacao-media);
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 2px solid var(--color-background);
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Lista: cards mais estreitos, imagem maior à esquerda */
+  @media (max-width: 1099px) {
+    .about__cards {
+      --about-card-media: clamp(112px, 28vw, 132px);
+      --about-card-formacao-media: var(--about-card-media);
+      --about-card-servico-media: var(--about-card-media);
+      --about-card-pad: var(--sp-20);
+      --about-card-gap: 12px;
+      width: 100%;
+      max-width: min(480px, 100%);
+      margin-inline: auto;
+    }
+
+    .info-card--formacao,
+    .info-card--servico,
+    .info-card--experiencia,
+    .info-card--reconhecimento {
+      grid-template-columns: var(--about-card-media) minmax(0, 1fr);
+      align-items: center;
+    }
+
+    .info-card--formacao__logo,
+    .info-card--reconhecimento__logo {
+      width: var(--about-card-media);
+      height: var(--about-card-media);
+      border-radius: 16px;
+      object-fit: cover;
+    }
+
+    .info-card--servico__image {
+      width: var(--about-card-media);
+      height: var(--about-card-media);
+      flex-shrink: 0;
+      border-radius: 16px;
+    }
+
+    .info-card--servico__image img {
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    .info-card--experiencia__number-block {
+      width: var(--about-card-media);
+      height: var(--about-card-media);
+      flex-shrink: 0;
+    }
+
+    .info-card--experiencia__graphic {
+      width: 100%;
+      height: 100%;
+      max-height: none;
+      object-fit: contain;
+      object-position: center center;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .about__doctor-stage {
+      max-width: clamp(240px, 48vw, 300px);
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1099px) {
+    .about__infographic {
+      display: grid;
+      grid-template-columns: minmax(200px, 34%) minmax(0, 1fr);
+      align-items: start;
+      column-gap: clamp(24px, 4vw, 48px);
+      row-gap: var(--about-cards-stack-gap);
+      padding: clamp(28px, 4vw, 48px) 0;
+    }
+
+    .about__doctor-stage {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      margin-inline: 0;
+      max-width: none;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .about__doctor-photo {
+      flex: 1 1 auto;
+      width: 100%;
+      min-height: 0;
+      max-width: none;
+      margin-inline: 0;
+      aspect-ratio: auto;
+      height: 100%;
+    }
+
+    .about__doctor-photo img {
+      min-height: 100%;
+      object-position: center 10%;
+    }
+
+    .about__cards--left {
+      grid-column: 2;
+      grid-row: 1;
+      align-self: start;
+      justify-self: center;
+    }
+
+    .about__cards--right {
+      grid-column: 2;
+      grid-row: 2;
+      align-self: start;
+      justify-self: center;
+    }
+
+    .info-card--servico .info-card__text-block,
+    .info-card--servico .info-card--servico__image,
+    .info-card--reconhecimento .info-card__text-block,
+    .info-card--reconhecimento__logo {
+      order: unset;
+    }
+  }
+
+  @media (min-width: 961px) and (max-width: 1100px) {
+    .about__infographic {
+      column-gap: clamp(16px, 2vw, var(--sp-25));
+      padding: 0;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 480px);
+    }
+
+    .about__doctor-stage {
+      min-width: 0;
+      width: 100%;
+      max-width: none;
+    }
+
+    .about__doctor-photo {
+      flex: none;
+      width: 100%;
+      height: auto;
+      aspect-ratio: var(--about-doctor-aspect);
+    }
+
+    .about__doctor-photo img {
+      min-height: 0;
+      height: 100%;
+    }
+
+    .about__cards {
+      width: 100%;
+      max-width: 480px;
+      margin-inline: 0;
+    }
+
+    .about__cards--left,
+    .about__cards--right {
+      justify-self: end;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .about__infographic {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 370px) minmax(0, 1fr);
+      grid-template-rows: auto;
+      column-gap: clamp(16px, 2.5vw, 32px);
+      row-gap: 0;
+      align-items: center;
+      padding: clamp(32px, 4vw, 48px) 0;
+      --about-cards-gap-left: 86px;
+      --about-cards-gap-right: 67px;
+    }
+
+    .about__cards--left,
+    .about__cards--right {
+      display: flex;
+      flex-direction: column;
+      grid-row: 1;
+      z-index: 3;
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+    }
+
+    .about__cards--left {
+      grid-column: 1;
+      gap: var(--about-cards-gap-left);
+      justify-self: end;
+      align-self: center;
+      align-items: flex-end;
+    }
+
+    .about__cards--right {
+      grid-column: 3;
+      gap: var(--about-cards-gap-right);
+      justify-self: start;
+      align-self: center;
+      align-items: flex-start;
+    }
+
+    .about__doctor-stage {
+      grid-column: 2;
+      grid-row: 1;
+      z-index: 1;
+      width: 100%;
+      max-width: 370px;
+      margin-inline: auto;
+      align-self: center;
+    }
+
+    .about__doctor-photo {
+      aspect-ratio: var(--about-doctor-aspect);
+      height: auto;
+    }
+
+    .about__doctor-photo img {
+      min-height: 0;
+      object-position: center 14%;
+    }
+
+    .about__connectors {
+      display: block;
+    }
+
+    .about__connector--formacao {
+      top: 23%;
+      left: 28%;
+      width: clamp(100px, 14vw, 180px);
+      flex-direction: row;
+    }
+
+    .about__connector--formacao .about__connector__line {
+      flex: 1 1 auto;
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+    }
+
+    .about__connector--experiencia {
+      top: 73%;
+      left: 28%;
+      width: clamp(100px, 14vw, 180px);
+      flex-direction: row;
+    }
+
+    .about__connector--experiencia .about__connector__line {
+      flex: 1 1 auto;
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+    }
+
+    .about__connector--servico {
+      top: 31%;
+      right: 28%;
+      left: auto;
+      width: clamp(100px, 14vw, 180px);
+      flex-direction: row;
+    }
+
+    .about__connector--servico .about__connector__line {
+      flex: 1 1 auto;
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+    }
+
+    .about__connector--reconhecimento {
+      top: 57%;
+      right: 28%;
+      left: auto;
+      width: clamp(100px, 14vw, 180px);
+      flex-direction: row;
+    }
+
+    .about__connector--reconhecimento .about__connector__line {
+      flex: 1 1 auto;
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+    }
+
+    .about__cards--left,
+    .about__cards--right {
+      --about-card-formacao-media: 152px;
+      --about-card-servico-media: 124px;
+    }
+
+    .about__cards--left .info-card,
+    .about__cards--right .info-card {
+      --about-card-media: 108px;
+      --about-card-gap: 14px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .info-card--formacao {
+      grid-template-columns: var(--about-card-formacao-media) minmax(0, 1fr);
+    }
+
+    .info-card--experiencia {
+      --about-card-experiencia-media: 128px;
+      grid-template-columns: var(--about-card-experiencia-media) minmax(0, 1fr);
+    }
+
+    .info-card--experiencia__number-block {
+      width: var(--about-card-experiencia-media);
+      height: auto;
+      min-height: var(--about-card-media);
+    }
+
+    .info-card--servico {
+      grid-template-columns: minmax(0, 1fr) var(--about-card-servico-media);
+    }
+
+    .info-card--servico__image {
+      border-radius: 50%;
+    }
+
+    .info-card--servico .info-card__text-block {
+      order: 1;
+    }
+
+    .info-card--servico .info-card--servico__image {
+      order: 2;
+    }
+
+    .info-card--reconhecimento {
+      grid-template-columns: minmax(0, 1fr) var(--about-card-formacao-media);
+    }
+
+    .info-card--reconhecimento__logo {
+      order: 2;
+    }
+
+    .info-card--reconhecimento .info-card__text-block {
+      order: 1;
+    }
+  }
+
+  @media (min-width: 1100px) and (max-width: 1280px) {
+    .about__infographic {
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 280px) minmax(0, 1fr);
+      column-gap: clamp(12px, 1.8vw, 20px);
+    }
+
+    .about__doctor-stage {
+      max-width: 280px;
+    }
+
+    .about__doctor-photo img {
+      object-position: center 12%;
+    }
+
+    .about__cards--left,
+    .about__cards--right {
+      max-width: none;
+    }
+
+    .about__cards--left .info-card,
+    .about__cards--right .info-card {
+      max-width: none;
+    }
+
+    .about__cards--left,
+    .about__cards--right {
+      --about-card-formacao-media: 120px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .about__cards {
+      --about-card-media: clamp(132px, 40vw, 160px);
+      --about-card-formacao-media: var(--about-card-media);
+      --about-card-servico-media: var(--about-card-media);
+      --about-card-gap: 12px;
+      max-width: min(400px, 100%);
+    }
+
+    .about__doctor-stage {
+      max-width: clamp(220px, 68vw, 280px);
+    }
+
+    .about__doctor-photo img {
+      object-position: center 8%;
+    }
+
+    .info-card--formacao,
+    .info-card--servico,
+    .info-card--experiencia,
+    .info-card--reconhecimento {
+      min-height: 0;
+    }
+  }
+
+/* --- TESTIMONIALS --- */
+.testimonials {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-25);
+    align-items: center;
+    padding: var(--sp-30) 0 0;
+    width: 100%;
+  }
+
+  .testimonials.is-ready {
+    margin-bottom: var(--sp-30);
+  }
+
+  .testimonials__slider {
+    width: 100%;
+  }
+
+  .testimonials__viewport {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .testimonials__slide {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-25);
+    align-items: center;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(0, var(--motion-distance-sm), 0);
+    transition:
+      opacity var(--motion-duration-fast) var(--motion-ease-out),
+      transform var(--motion-duration-fast) var(--motion-ease-out),
+      visibility var(--motion-duration-fast);
+    pointer-events: none;
+  }
+
+  .testimonials__slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+    pointer-events: auto;
+  }
+
+  .testimonials__slide.is-leaving {
+    opacity: 0;
+    transform: translate3d(0, calc(var(--motion-distance-sm) * -0.6), 0);
+    pointer-events: none;
+  }
+
+  .testimonials__quote {
+    font-family: var(--font-display);
+    font-size: var(--text-lead);
+    font-weight: 300;
+    color: var(--color-text);
+    text-align: center;
+    width: 100%;
+    line-height: var(--lh-body);
+    margin: 0;
+  }
+
+  .testimonials__author {
+    font-family: var(--font-display);
+    font-size: var(--fs-24);
+    font-weight: 300;
+    color: var(--color-text);
+    text-align: center;
+    width: 100%;
+    margin: 0;
+  }
+
+  .testimonials__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .testimonials__profiles {
+    width: 100px;
+    height: 50px;
+    flex-shrink: 0;
+  }
+
+  .testimonials__stars {
+    display: flex;
+    gap: var(--sp-10);
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .testimonials__stars img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .testimonials__nav {
+    display: flex;
+    gap: var(--sp-10);
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .testimonials__nav-btn {
+    width: 44px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .testimonials__nav-btn:focus-visible {
+    outline: 2px solid var(--color-tertiary);
+    outline-offset: 2px;
+    border-radius: 50%;
+  }
+
+  .testimonials__nav-btn img {
+    display: block;
+    width: 44px;
+    height: 42px;
+    flex-shrink: 0;
+  }
+
+  .testimonials__nav-btn--next img {
+    transform: scaleX(-1);
+  }
+
+/* ===================== RESPONSIVE — TABLET ===================== */
+@media (max-width: 1330px) {
+  .about__title-wrap {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--sp-20);
+  }
+
+  .about__description-wrap {
+    justify-content: center;
+    flex: 1 1 auto;
+    max-width: 48rem;
+  }
+
+  .about__logo-small {
+    display: none;
+  }
+
+  .about__description {
+    width: 100%;
+    max-width: 48rem;
+    text-align: center;
+  }
+
+  .testimonials { padding: var(--sp-20) 0 0; }
+
+  .testimonials.is-ready { margin-bottom: var(--sp-20); }
+}
+
+@media (max-width: 768px) {
+  .about__title {
+    font-size: clamp(28px, 7vw, 36px);
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  .about__title-wrap {
+    height: auto;
+    padding: var(--sp-25) 0;
+  }
+
+  .about__description {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about__cards {
+    --about-card-media: clamp(112px, 24vw, 136px);
+  }
+
+  .info-card--formacao,
+  .info-card--servico,
+  .info-card--experiencia,
+  .info-card--reconhecimento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--about-card-gap);
+  }
+
+  .about__cards .info-card .info-card__text-block {
+    display: contents;
+  }
+
+  .info-card__heading {
+    order: 1;
+    width: 100%;
+    text-align: center;
+  }
+
+  .info-card--formacao__logo,
+  .info-card--servico__image,
+  .info-card--experiencia__number-block,
+  .info-card--reconhecimento__logo {
+    order: 2;
+    width: var(--about-card-media);
+    height: var(--about-card-media);
+    margin-inline: auto;
+  }
+
+  .info-card--servico .info-card--servico__image,
+  .info-card--reconhecimento__logo {
+    order: 2;
+  }
+
+  .info-card__body {
+    order: 3;
+    width: 100%;
+    text-align: center;
+  }
+
+  .about__infographic {
+    gap: var(--about-cards-stack-gap);
+  }
+
+  .testimonials {
+    gap: var(--sp-15);
+  }
+
+  .testimonials__controls {
+    flex-direction: column;
+    gap: var(--sp-15);
+    align-items: center;
+  }
+
+  .testimonials__nav {
+    gap: var(--sp-15);
+  }
+
+  .testimonials__profiles {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials__slide,
+  .testimonials__slide.is-leaving {
+    transition: none;
+    transform: none;
+  }
+}

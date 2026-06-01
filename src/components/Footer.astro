@@ -1,0 +1,89 @@
+---
+import { WHATSAPP_PHONE_DISPLAY, WHATSAPP_URL } from '../data/whatsapp';
+
+const home = import.meta.env.BASE_URL;
+const sectionHref = (id: string) => `${home}#${id}`;
+---
+
+<footer>
+    <div class="footer__bg" aria-hidden="true"></div>
+    <div class="footer__bg-pattern" aria-hidden="true">
+      <img src="/assets/Círculo decorativo.svg" alt="" />
+    </div>
+
+    <div class="footer__top layout-shell" data-motion-stagger>
+
+      <!-- Logo -->
+      <div class="footer__brand" data-motion>
+        <a href={home} class="footer__logo motion-link" aria-label="Dr. Victor Mol - Página inicial">
+          <img
+            class="footer__logo-icon"
+            src="/assets/LogoIconeClaro.svg"
+            alt="Logo ícone Dr. Victor Mol"
+          />
+          <img
+            class="footer__logo-text"
+            src="/assets/LogoTextoClaro.webp"
+            alt="Dr. Victor Mol"
+          />
+        </a>
+        <p class="footer__credentials">CRM 52102755-7 | RQE 44662</p>
+      </div>
+
+      <!-- Mapa do site -->
+      <nav class="footer__col footer__col--sitemap" data-motion aria-label="Mapa do site">
+        <p class="footer__col-title">Mapa do Site</p>
+        <a href={home} class="motion-link">Início</a>
+        <a href={sectionHref('servicos')} class="motion-link">Serviços</a>
+        <a href={sectionHref('sobre')} class="motion-link">Sobre Mim</a>
+        <a href={sectionHref('locais')} class="motion-link">Locais de Atendimento</a>
+      </nav>
+
+      <!-- Serviços -->
+      <nav class="footer__col footer__col--services" data-motion aria-label="Serviços">
+        <p class="footer__col-title">Serviços</p>
+        <a class="motion-link" href="/segunda-opiniao-exames-radiologicos/">Segunda Opinião de Exames Radiológicos</a>
+        <a class="motion-link" href="/ultrassonografia-geral/">Ultrassonografia Geral</a>
+        <a class="motion-link" href="/ultrassonografia-dermatologica/">Ultrassonografia Dermatológica</a>
+        <a class="motion-link" href="/ultrassonografia-domiciliar/">Ultrassonografia Domiciliar</a>
+        <a class="motion-link" href="/ultrassonografia-para-guiar-procedimentos/">Ultrassonografia para Guiar Procedimentos</a>
+        <a class="motion-link" href="/estetica-intima-masculina/">Estética Íntima Masculina</a>
+        <a class="motion-link" href="/doppler-peniano-com-injecao-cavernosa/">Doppler Peniano com Injeção Cavernosa</a>
+      </nav>
+
+      <!-- Contato -->
+      <address class="footer__col footer__col--contact" data-motion>
+        <p class="footer__col-title">Contato</p>
+        <a class="footer__contact-link motion-link" href="mailto:contato@victormol.com.br">
+          <img class="footer__contact-icon" src="/assets/footer-icon-email.svg" alt="" width="16" height="16" aria-hidden="true" />
+          <span>contato@victormol.com.br</span>
+        </a>
+        <a
+          class="footer__contact-link motion-link"
+          href="https://www.instagram.com/dr_victormol/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img class="footer__contact-icon" src="/assets/footer-icon-instagram.svg" alt="" width="16" height="16" aria-hidden="true" />
+          <span>@dr_victormol</span>
+        </a>
+        <a
+          class="footer__contact-link motion-link"
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`WhatsApp ${WHATSAPP_PHONE_DISPLAY}`}
+        >
+          <img class="footer__contact-icon" src="/assets/footer-icon-phone.svg" alt="" width="16" height="16" aria-hidden="true" />
+          <span>{WHATSAPP_PHONE_DISPLAY}</span>
+        </a>
+      </address>
+
+    </div>
+
+    <div class="footer__bottom layout-shell" data-motion="fade">
+      <p>Designed by Linx Web Studio</p>
+      <p>© Copyright 2025 – Todos os direitos reservados ao Dr. Victor Mol. Imagens meramente ilustrativas</p>
+    </div>
+
+</footer>

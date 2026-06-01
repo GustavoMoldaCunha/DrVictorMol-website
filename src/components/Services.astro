@@ -1,0 +1,66 @@
+---
+import WhatsAppCta from './WhatsAppCta.astro';
+import { SERVICES as services } from '../data/services';
+---
+
+<section class="services layout-shell" id="servicos" aria-labelledby="services-title">
+
+      <div class="services__header" data-motion-stagger>
+        <h2 class="services__title" id="services-title" data-motion>Serviços</h2>
+        <div class="services__description-wrap" data-motion>
+          <p class="services__description">
+            Nesta seção, você encontra os principais exames e avaliações por imagem que realizo. Meu trabalho é ajudar pacientes e médicos a entender melhor os resultados dos exames, oferecendo segurança, clareza e cuidado em cada atendimento.
+          </p>
+          <img
+            class="services__logo-small"
+            src="./assets/LogoIconeDark.webp"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+      </div>
+
+      <div class="services__grid" data-motion-stagger>
+
+        {services.map((service) => {
+          const overlayClass = service.overlayLighter
+            ? 'service-card__bg-overlay service-card__bg-overlay--lighter'
+            : 'service-card__bg-overlay';
+          const cardBg = (
+            <>
+              <div class="service-card__bg" aria-hidden="true">
+                <img src={service.image} alt={service.imageAlt} loading="lazy" decoding="async" />
+                <div class={overlayClass}></div>
+              </div>
+              <div class="service-card__arrow-wrap">
+                <img class="service-card__arrow" src="/assets/service-arrow.svg" alt="" aria-hidden="true" />
+              </div>
+              <h3 class="service-card__title">{service.title}</h3>
+            </>
+          );
+
+          return service.href ? (
+            <a href={service.href} class="service-card" data-motion>
+              {cardBg}
+            </a>
+          ) : (
+            <article class="service-card" data-motion>
+              {cardBg}
+            </article>
+          );
+        })}
+
+        <article class="service-card service-card--dark" data-motion>
+          <div class="service-card__bg-pattern" aria-hidden="true">
+            <img src="/assets/Círculo decorativo.svg" alt="" />
+          </div>
+          <div class="service-card__inner">
+            <div class="service-card__arrow-wrap">
+              <img class="service-card__arrow" src="/assets/service-arrow.svg" alt="" aria-hidden="true" />
+            </div>
+            <WhatsAppCta variant="contact" />
+          </div>
+        </article>
+
+      </div>
+    </section>

@@ -1,0 +1,25 @@
+{
+  "name": "Dr. Victor Mol",
+  "short_name": "Dr Victor",
+  "description": "Radiologista — ultrassonografia, segunda opinião e exames especializados em Niterói e região.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/favicon-light.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-dark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#101A2B",
+  "background_color": "#101A2B",
+  "display": "standalone"
+}

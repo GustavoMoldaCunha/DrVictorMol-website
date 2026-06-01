@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import '../styles/service-page.css'
+
+import ServicePageHero from '../components/service-page/ServicePageHero.astro'
+import ServiceInlineCta from '../components/service-page/ServiceInlineCta.astro'
+import ServiceFinalCta from '../components/service-page/ServiceFinalCta.astro'
+import { serviceStructuredData } from '../data/structured-data'
+
+const pageTitle = 'Ultrassonografia Dermatológica | Dr. Victor Mol'
+const pageDescription =
+  'Ultrassom dermatológico com transdutores de alta frequência para avaliação precisa da pele e tecido subcutâneo. Mapeamento, complicações estéticas e planejamento cirúrgico com o Dr. Victor Mol.'
+const heroImage = '/assets/HeroUltrassomDermatologico.png'
+
+const structuredData = serviceStructuredData({
+  pathname: '/ultrassonografia-dermatologica/',
+  name: 'Ultrassonografia Dermatológica',
+  description: pageDescription,
+  imagePath: heroImage,
+  breadcrumbLabel: 'Ultrassonografia Dermatológica',
+})
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageClass="page--service"
+  structuredData={structuredData}
+  ogImage={heroImage}
+  preloadImages={[heroImage]}
+>
+
+  <ServicePageHero
+    title="Ultrassonografia Dermatológica"
+    subtitle="Avaliação de alta precisão da pele e do tecido subcutâneo com transdutores de alta frequência para dermatologia e cirurgia plástica."
+    breadcrumbCurrent="Ultrassonografia Dermatológica"
+    imageSrc="/assets/HeroUltrassomDermatologico.png"
+    imageAlt="Ultrassonografia dermatológica realizada pelo Dr. Victor Mol"
+    mediaClass="service-hero__media--edge-right"
+  />
+
+  <div class="service-page layout-shell">
+    <article class="service-article" itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="headline" content="Ultrassonografia Dermatológica" />
+
+      <section class="service-section" aria-labelledby="o-que-e-ultrassom-dermatologico" data-motion-stagger>
+        <h2 class="service-section__title" id="o-que-e-ultrassom-dermatologico" data-motion>
+          O que é o Ultrassom Dermatológico?
+        </h2>
+        <p class="service-section__lead" data-motion>
+          O ultrassom dermatológico é um exame essencial para a avaliação de estruturas da pele e do tecido subcutâneo com extrema precisão. Ao contrário da ultrassonografia padrão, o ultrassom dermatológico requer tecnologia mais avançada, utilizando transdutores de alta frequência. Essa tecnologia permite uma avaliação minuciosa das camadas superficiais da pele, fornecendo informações valiosas para diversos procedimentos dermatológicos e cirúrgicos.
+        </p>
+      </section>
+
+      <ServiceInlineCta
+        text="Quer incluir o ultrassom dermatológico no seu cuidado? Agende uma avaliação com orientação especializada."
+      />
+
+      <section class="service-section" aria-labelledby="principais-aplicacoes" data-motion-stagger>
+        <h2 class="service-section__title" id="principais-aplicacoes" data-motion>
+          Principais Aplicações do Ultrassom Dermatológico
+        </h2>
+        <p data-motion>
+          O ultrassom dermatológico é um diferencial significativo nas áreas de dermatologia e cirurgia plástica. Ele desempenha um papel crucial em várias aplicações, como o mapeamento de preenchedores e bioestimuladores. Além disso, é fundamental na avaliação de complicações estéticas, incluindo nódulos e granulomas que podem surgir após esses procedimentos. A precisão proporcionada por esse exame também é vital para o planejamento cirúrgico, permitindo que os profissionais realizem intervenções com maior segurança.
+        </p>
+      </section>
+
+      <section class="service-section" aria-labelledby="beneficios-impacto" data-motion-stagger>
+        <h2 class="service-section__title" id="beneficios-impacto" data-motion>
+          Benefícios e Impacto no Tratamento
+        </h2>
+        <p data-motion>
+          Outro benefício importante do ultrassom dermatológico é sua capacidade de diagnosticar e acompanhar condições como a hidradenite supurativa, lesões ungueais e tumores de pele. Esse exame oferece uma visão detalhada que resulta em tratamentos mais personalizados e eficazes, garantindo maior segurança tanto para pacientes quanto para profissionais de saúde. Com a incorporação do ultrassom dermatológico, a medicina estética e a dermatologia avançam, permitindo uma abordagem mais precisa e individualizada no cuidado da pele.
+        </p>
+        <aside class="service-callout" data-motion>
+          <p>
+            Converse com seu médico sobre a possibilidade de associar o ultrassom dermatológico na sua abordagem diagnóstica e terapêutica.
+          </p>
+        </aside>
+      </section>
+    </article>
+  </div>
+
+  <ServiceFinalCta
+    title="Precisão no cuidado da sua pele"
+    text="Agende o ultrassom dermatológico com o Dr. Victor Mol. Tecnologia de alta frequência, laudo detalhado e suporte ao planejamento do seu tratamento."
+  />
+</BaseLayout>

@@ -1,0 +1,83 @@
+/* ===================== WHATSAPP FLOAT ===================== */
+.whatsapp-float {
+  --whatsapp-float-size: 78px;
+  --whatsapp-float-icon: 40px;
+  --whatsapp-float-offset: clamp(16px, 3vw, 24px);
+
+  position: fixed;
+  z-index: 900;
+  right: max(var(--whatsapp-float-offset), env(safe-area-inset-right, 0px));
+  bottom: max(var(--whatsapp-float-offset), env(safe-area-inset-bottom, 0px));
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--whatsapp-float-size);
+  height: var(--whatsapp-float-size);
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--color-white) 28%, transparent);
+  background: var(--color-secondary);
+  color: var(--color-white);
+  box-shadow:
+    0 10px 32px color-mix(in srgb, var(--color-primary) 24%, transparent),
+    0 2px 8px color-mix(in srgb, var(--color-primary) 12%, transparent);
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate3d(0, 0, 0);
+  transition: transform var(--motion-duration-fast) var(--motion-ease-out);
+  animation: whatsapp-float-enter 0.7s var(--motion-ease-out) 0.6s both;
+}
+
+.whatsapp-float__icon {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: var(--whatsapp-float-icon);
+  height: var(--whatsapp-float-icon);
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-2px);
+}
+
+.whatsapp-float:active {
+  transform: translateY(0);
+}
+
+.whatsapp-float:focus-visible {
+  outline: 2px solid var(--color-tertiary);
+  outline-offset: 4px;
+}
+
+@keyframes whatsapp-float-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    --whatsapp-float-size: 60px;
+    --whatsapp-float-icon: 30px;
+    --whatsapp-float-offset: clamp(14px, 4vw, 20px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float {
+    animation: none;
+    transition: none;
+  }
+
+  .whatsapp-float:hover,
+  .whatsapp-float:active {
+    transform: none;
+  }
+}

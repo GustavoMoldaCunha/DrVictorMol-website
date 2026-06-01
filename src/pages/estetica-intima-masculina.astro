@@ -1,0 +1,251 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import '../styles/service-page.css'
+
+import ServicePageHero from '../components/service-page/ServicePageHero.astro'
+import ServiceInlineCta from '../components/service-page/ServiceInlineCta.astro'
+import ServiceFinalCta from '../components/service-page/ServiceFinalCta.astro'
+import { serviceStructuredData } from '../data/structured-data'
+
+const pageTitle = 'Estética Íntima Masculina | Dr. Victor Mol'
+const pageDescription =
+  'Estética íntima masculina com ácido hialurônico, toxina botulínica escrotal e avaliação por ultrassom. Procedimentos seguros, reversíveis e personalizados com o Dr. Victor Mol.'
+const heroImage = '/assets/HeroEsteticaIntima.webp'
+
+const structuredData = serviceStructuredData({
+  pathname: '/estetica-intima-masculina/',
+  name: 'Estética Íntima Masculina',
+  description: pageDescription,
+  imagePath: heroImage,
+  breadcrumbLabel: 'Estética Íntima Masculina',
+})
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageClass="page--service"
+  structuredData={structuredData}
+  ogImage={heroImage}
+  preloadImages={[heroImage]}
+>
+
+  <ServicePageHero
+    title="Estética Íntima Masculina: Inovação, Segurança e Confiança"
+    subtitle="Aumento da espessura peniana com ácido hialurônico e rejuvenescimento escrotal com toxina botulínica."
+    breadcrumbCurrent="Estética Íntima Masculina"
+    imageSrc="/assets/HeroEsteticaIntima.webp"
+    imageAlt="Estética íntima masculina realizada pelo Dr. Victor Mol"
+    mediaClass="service-hero__media--edge-right service-hero__media--portrait-float"
+  />
+
+  <div class="service-page layout-shell">
+    <article class="service-article" itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="headline" content="Estética Íntima Masculina" />
+
+      <section class="service-section" aria-labelledby="intro-estetica-intima" data-motion-stagger>
+        <p class="service-section__lead" id="intro-estetica-intima" data-motion>
+          A estética íntima masculina tem ganhado cada vez mais destaque, acompanhando a busca dos homens por autoestima, bem-estar e satisfação com a própria imagem. Pensando nisso, agora ofereço procedimentos modernos e seguros voltados especificamente para essa região tão importante, mas muitas vezes negligenciada: o pênis e a bolsa escrotal.
+        </p>
+      </section>
+
+      <section class="service-section" aria-labelledby="aumento-espessura" data-motion-stagger>
+        <h2 class="service-section__title" id="aumento-espessura" data-motion>
+          O que é o aumento da espessura peniana com ácido hialurônico?
+        </h2>
+        <p data-motion>
+          É um procedimento minimamente invasivo que utiliza ácido hialurônico — uma substância produzida em laboratório e com estrutura semelhante à do ácido hialurônico presente no nosso corpo — para aumentar a espessura do pênis de forma natural e harmoniosa. O objetivo não é apenas estético, mas também pode trazer benefícios à autoconfiança e à relação com o próprio corpo.
+        </p>
+        <p data-motion><strong>Benefícios:</strong></p>
+        <ul class="service-list" data-motion>
+          <li>Aumento da espessura peniana com resultado natural</li>
+          <li>Melhora da autoestima e da imagem corporal</li>
+          <li>Procedimento ambulatorial, com rápida recuperação</li>
+          <li>Resultado imediato e progressivo nos primeiros dias</li>
+        </ul>
+      </section>
+
+      <section class="service-section" aria-labelledby="por-que-acido-hialuronico" data-motion-stagger>
+        <h2 class="service-section__title" id="por-que-acido-hialuronico" data-motion>
+          Por que o ácido hialurônico é uma boa opção?
+        </h2>
+        <p data-motion>
+          O ácido hialurônico utilizado nesse tipo de procedimento é processado industrialmente, com estrutura similar à do ácido hialurônico encontrado naturalmente no organismo. Por isso, quando bem indicado e aplicado por profissionais capacitados, tende a ser bem tolerado.
+        </p>
+        <p data-motion>
+          O grande diferencial desse tratamento está no seu alto grau de controle e possibilidade de reversão, o que proporciona mais tranquilidade ao paciente.
+        </p>
+        <h3 class="service-section__subtitle" data-motion>1. Resultados temporários e ajustáveis</h3>
+        <p data-motion>
+          Os efeitos do ácido hialurônico não são permanentes. A substância é gradualmente absorvida pelo organismo ao longo dos meses, o que permite ajustes em futuras aplicações, conforme o desejo do paciente.
+        </p>
+        <h3 class="service-section__subtitle" data-motion>2. Reversão com hialuronidase</h3>
+        <p data-motion>
+          Caso o paciente deseje reverter o resultado — seja por preferência estética, desconforto ou intercorrência —, é possível aplicar uma enzima chamada hialuronidase, que dissolve o ácido hialurônico de forma eficaz.
+        </p>
+        <h3 class="service-section__subtitle" data-motion>3. Procedimento minimamente invasivo</h3>
+        <p data-motion>
+          A aplicação é feita com anestesia local, sem necessidade de cortes, internação ou longos períodos de recuperação. O retorno às atividades diárias ocorre geralmente no mesmo dia, com orientações específicas para o pós-procedimento.
+        </p>
+        <aside class="service-callout" data-motion>
+          <p>
+            <strong>Importante:</strong> Como qualquer procedimento estético, o uso de ácido hialurônico pode envolver riscos e não é isento de efeitos colaterais. Uma avaliação médica criteriosa é fundamental para garantir segurança e bons resultados.
+          </p>
+        </aside>
+      </section>
+
+      <section class="service-section" aria-labelledby="rejuvenescimento-escrotal" data-motion-stagger>
+        <h2 class="service-section__title" id="rejuvenescimento-escrotal" data-motion>
+          O que é o rejuvenescimento escrotal com toxina botulínica?
+        </h2>
+        <p data-motion>
+          A aplicação da toxina botulínica (conhecida como Botox) na região da bolsa escrotal visa relaxar a musculatura superficial, suavizando o aspecto enrugado da pele e promovendo uma aparência mais descansada e rejuvenescida. Além disso, pode auxiliar em casos de suor excessivo (hiperidrose) na região íntima.
+        </p>
+        <p data-motion><strong>Benefícios:</strong></p>
+        <ul class="service-list" data-motion>
+          <li>Melhora estética visível da bolsa escrotal</li>
+          <li>Redução de rugas e do aspecto envelhecido</li>
+          <li>Diminuição da sudorese excessiva local</li>
+          <li>Aplicação rápida, com pouco ou nenhum desconforto</li>
+        </ul>
+      </section>
+
+      <section class="service-section" aria-labelledby="para-quem-indicado" data-motion-stagger>
+        <h2 class="service-section__title" id="para-quem-indicado" data-motion>
+          Para quem são indicados esses procedimentos?
+        </h2>
+        <p data-motion>Esses tratamentos são indicados para homens adultos que desejam:</p>
+        <ul class="service-list" data-motion>
+          <li>Melhorar a estética íntima com segurança e discrição</li>
+          <li>Sentir-se mais confiantes com seu corpo</li>
+          <li>Buscar soluções modernas, minimamente invasivas e com tempo de recuperação rápido</li>
+        </ul>
+      </section>
+
+      <ServiceInlineCta
+        text="Quer saber se esses procedimentos são indicados para você? Agende uma avaliação personalizada."
+      />
+
+      <section class="service-section" aria-labelledby="avaliacao-ultrassom" data-motion-stagger>
+        <h2 class="service-section__title" id="avaliacao-ultrassom" data-motion>
+          Avaliação com ultrassom antes e depois do procedimento: segurança e personalização
+        </h2>
+        <p data-motion>
+          Um dos grandes diferenciais do meu atendimento em estética íntima masculina é o uso do ultrassom em duas etapas essenciais do processo: antes da aplicação, para uma avaliação completa e individualizada, e após o procedimento, para garantir que o resultado final esteja seguro e adequado.
+        </p>
+        <h3 class="service-section__subtitle" data-motion>Avaliação prévia com ultrassom: conhecendo sua anatomia</h3>
+        <p data-motion>Antes do procedimento, realizo um exame de ultrassom para:</p>
+        <ul class="service-list" data-motion>
+          <li>Avaliar a espessura da pele e o tecido subcutâneo</li>
+          <li>Identificar vasos sanguíneos e estruturas a serem evitadas</li>
+          <li>
+            Detectar a presença de preenchedores permanentes previamente injetados, como silicone líquido ou PMMA, que podem contraindicar ou modificar a abordagem
+          </li>
+        </ul>
+        <p data-motion>
+          Esse cuidado é fundamental para oferecer um tratamento seguro, personalizado e tecnicamente adequado.
+        </p>
+        <h3 class="service-section__subtitle" data-motion>Avaliação pós-aplicação com ultrassom: garantia de segurança</h3>
+        <p data-motion>Após o procedimento, repito o exame de ultrassom para:</p>
+        <ul class="service-list" data-motion>
+          <li>Confirmar a distribuição adequada do ácido hialurônico</li>
+          <li>Verificar se houve algum acúmulo ou alteração indesejada</li>
+          <li>Garantir que o resultado esteja de acordo com o planejado</li>
+        </ul>
+        <p data-motion>
+          Esse acompanhamento com imagem reforça meu compromisso com a qualidade e a segurança em cada etapa do processo.
+        </p>
+      </section>
+
+      <section class="service-section" aria-labelledby="seguranca-etica" data-motion-stagger>
+        <h2 class="service-section__title" id="seguranca-etica" data-motion>
+          Segurança, ética e naturalidade em primeiro lugar
+        </h2>
+        <p data-motion>
+          Todos os procedimentos são realizados 100% por mim, em ambiente médico adequado, e com o uso de materiais de qualidade. A naturalidade dos resultados é sempre priorizada, respeitando o biotipo e os objetivos individuais de cada paciente.
+        </p>
+      </section>
+
+      <section class="service-section" aria-labelledby="dados-percepcao" data-motion-stagger>
+        <h2 class="service-section__title" id="dados-percepcao" data-motion>
+          Dados sobre percepção estética peniana e tamanhos médios
+        </h2>
+        <h3 class="service-section__subtitle" data-motion>Insatisfação masculina com o tamanho do pênis</h3>
+        <p data-motion>
+          Uma meta-análise global com 52.031 homens e mulheres revelou que apenas 55% dos homens estavam satisfeitos com o tamanho do pênis, enquanto 85% das mulheres estavam satisfeitas com o tamanho do parceiro.
+        </p>
+        <p data-motion>
+          Um estudo publicado no JAMA Network Open (2019), com 4.109 homens nos EUA, identificou que 26,4% estavam insatisfeitos com seu tamanho.
+        </p>
+        <h3 class="service-section__subtitle" data-motion>Tamanho médio do pênis – dados brasileiros e globais</h3>
+        <p data-motion><strong>Brasil:</strong> estudo com 627 homens medindo o pênis flácido esticado mostrou média de 15,8 cm entre homens brancos e 16,5 cm entre homens negros.</p>
+        <p data-motion>
+          <strong>Mundo (meta-análise):</strong> comprimento ereto médio: 13,84 cm (SE 0,94 cm), circunferência ereta média: 11,91 cm (SE 0,18 cm).
+        </p>
+        <p data-motion>
+          <strong>Variações regionais:</strong> América (alongado 14,47 cm), Europa (12,61 cm), Sudeste Asiático (10,88 cm).
+        </p>
+        <h3 class="service-section__subtitle" data-motion>Resumo prático</h3>
+        <table class="service-data-table" data-motion>
+          <tbody>
+            <tr>
+              <th scope="row">Satisfação masculina global</th>
+              <td>55% satisfeitos; 45% insatisfeitos</td>
+            </tr>
+            <tr>
+              <th scope="row">Insatisfação nos EUA (2019)</th>
+              <td>26,4% relataram insatisfação</td>
+            </tr>
+            <tr>
+              <th scope="row">Tamanho ereto médio global</th>
+              <td>13,84 cm</td>
+            </tr>
+            <tr>
+              <th scope="row">Tamanho flácido esticado – Brasil</th>
+              <td>15,8 cm (brancos); 16,5 cm (negros)</td>
+            </tr>
+            <tr>
+              <th scope="row">Satisfação feminina com o parceiro</th>
+              <td>85% satisfeitas</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="service-section" aria-labelledby="impacto-psicologico" data-motion-stagger>
+        <h2 class="service-section__title" id="impacto-psicologico" data-motion>
+          Impacto nas relações interpessoais e na saúde mental
+        </h2>
+        <h3 class="service-section__subtitle" data-motion>Relação com autoestima e distúrbios psicológicos</h3>
+        <p data-motion>
+          Homens que se consideram com pênis “pequeno” relatam maior insegurança corporal, evitam se expor e têm menos confiança na intimidade. Isso pode levar até a diagnósticos como transtorno dismórfico peniano, caracterizado por ansiedade intensa e insatisfação com o próprio corpo, mesmo em presença de dimensões consideradas normais.
+        </p>
+        <h3 class="service-section__subtitle" data-motion>Percepção feminina versus masculina</h3>
+        <p data-motion>
+          Enquanto 55% dos homens se sentem satisfeitos, 85% das mulheres afirmam estar satisfeitas com o tamanho do parceiro. Estudos indicam que, para mulheres heterossexuais, circunferência pode ser mais importante que comprimento, e apenas entre 20–30% consideram o tamanho fundamental.
+        </p>
+        <h3 class="service-section__subtitle" data-motion>Efeito na vida sexual e social</h3>
+        <p data-motion>
+          A insatisfação pode levar a evitar nudez, usar roupas mais cobertas ou experimentar isolamento. No entanto, não há evidência clara de que o tamanho impacte diretamente no prazer da parceira — muitas vezes, essa é uma preocupação masculina desproporcional.
+        </p>
+      </section>
+
+      <section class="service-section" aria-labelledby="conclusao" data-motion-stagger>
+        <h2 class="service-section__title" id="conclusao" data-motion>Conclusão</h2>
+        <p data-motion>
+          Uma parcela significativa dos homens se sente insatisfeita, mesmo quando o tamanho está dentro da média. Para a maioria das mulheres, o que importa está mais ligado à circunferência e aspectos emocionais do que à mera dimensão.
+        </p>
+        <aside class="service-callout" data-motion>
+          <p>
+            Oferecer opções de tratamentos não invasivos e reversíveis, integradas a apoio psicológico e clareza sobre expectativas, pode transformar positivamente a vida íntima e emocional dos pacientes.
+          </p>
+        </aside>
+      </section>
+    </article>
+  </div>
+
+  <ServiceFinalCta
+    title="Estética íntima masculina com segurança e naturalidade"
+    text="Agende sua avaliação com ultrassom, conheça as opções de tratamento e receba um plano personalizado, ético e tecnicamente seguro."
+  />
+</BaseLayout>

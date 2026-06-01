@@ -1,0 +1,75 @@
+---
+import { WHATSAPP_URL } from '../data/whatsapp';
+
+type Variant = 'hero' | 'navbar' | 'contact';
+
+interface Props {
+  variant: Variant;
+  label?: string;
+}
+
+const { variant, label } = Astro.props;
+
+const defaultLabels: Record<Variant, string> = {
+  hero: 'Quero agendar uma consulta',
+  navbar: 'Quero agendar uma consulta',
+  contact: 'Entre em contato',
+};
+
+const text = label ?? defaultLabels[variant];
+const ariaLabel = `${text} (abre no WhatsApp)`;
+---
+
+{
+  variant === 'hero' && (
+    <a
+      href={WHATSAPP_URL}
+      class="hero__cta motion-btn"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={ariaLabel}
+    >
+      <img
+        class="hero__cta-icon"
+        src="/assets/cta-arrow.svg"
+        alt=""
+        aria-hidden="true"
+      />
+      {text}
+    </a>
+  )
+}
+
+{
+  variant === 'navbar' && (
+    <a
+      href={WHATSAPP_URL}
+      class="btn-cta motion-btn"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={ariaLabel}
+    >
+      {text}
+      <img
+        class="btn-cta__icon"
+        src="/assets/cta-arrow.svg"
+        alt=""
+        aria-hidden="true"
+      />
+    </a>
+  )
+}
+
+{
+  variant === 'contact' && (
+    <a
+      href={WHATSAPP_URL}
+      class="service-card__contact-btn"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={ariaLabel}
+    >
+      <span class="service-card__contact-text">{text}</span>
+    </a>
+  )
+}

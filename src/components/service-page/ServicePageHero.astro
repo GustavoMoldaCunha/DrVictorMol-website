@@ -1,0 +1,66 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  breadcrumbCurrent: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  /** Extra class on the media wrapper (e.g. square artwork framing). */
+  mediaClass?: string;
+}
+
+const {
+  title,
+  subtitle,
+  breadcrumbCurrent,
+  imageSrc,
+  imageAlt = '',
+  mediaClass = '',
+} = Astro.props;
+
+const hasImage = Boolean(imageSrc);
+---
+
+<header class="service-hero-wrap header">
+  <div class="service-hero layout-shell" aria-labelledby="service-hero-title">
+    <div class="service-hero__bg" aria-hidden="true"></div>
+    <div class="service-hero__bg-pattern" aria-hidden="true">
+      <img src="/assets/Círculo decorativo.svg" alt="" />
+    </div>
+
+    <div class="service-hero__content" data-motion-immediate-stagger>
+      <nav class="service-hero__breadcrumb" aria-label="Breadcrumb" data-motion>
+        <ol>
+          <li><a href="/">Início</a></li>
+          <li class="service-hero__breadcrumb-sep" aria-hidden="true">/</li>
+          <li><a href="/#servicos">Serviços</a></li>
+          <li class="service-hero__breadcrumb-sep" aria-hidden="true">/</li>
+          <li><span aria-current="page">{breadcrumbCurrent}</span></li>
+        </ol>
+      </nav>
+
+      <h1 class="service-hero__title" id="service-hero-title" data-motion>{title}</h1>
+      <p class="service-hero__subtitle" data-motion>{subtitle}</p>
+    </div>
+
+    {hasImage ? (
+      <div
+        class:list={['service-hero__media', mediaClass]}
+        data-motion-immediate
+        aria-hidden={!imageAlt}
+      >
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          width="360"
+          height="270"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    ) : (
+      <div class="service-hero__media service-hero__media--placeholder" aria-hidden="true"></div>
+    )}
+  </div>
+</header>

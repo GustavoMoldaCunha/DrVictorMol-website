@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import '../styles/service-page.css'
+
+import ServicePageHero from '../components/service-page/ServicePageHero.astro'
+import ServiceInlineCta from '../components/service-page/ServiceInlineCta.astro'
+import ServiceFinalCta from '../components/service-page/ServiceFinalCta.astro'
+import { serviceStructuredData } from '../data/structured-data'
+
+const pageTitle = 'Ultrassonografia Geral | Dr. Victor Mol'
+const pageDescription =
+  'Ultrassonografia geral com Doppler colorido para abdome, pelve, próstata, mamas e outras regiões. Exames na clínica Le Derme com o Dr. Victor Mol.'
+const heroImage = '/assets/HeroUltrassonografiaGeral.png'
+
+const structuredData = serviceStructuredData({
+  pathname: '/ultrassonografia-geral/',
+  name: 'Ultrassonografia Geral',
+  description: pageDescription,
+  imagePath: heroImage,
+  breadcrumbLabel: 'Ultrassonografia Geral',
+})
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageClass="page--service"
+  structuredData={structuredData}
+  ogImage={heroImage}
+  preloadImages={[heroImage]}
+>
+
+  <ServicePageHero
+    title="Ultrassonografia Geral"
+    subtitle="Exames de ultrassom com tecnologia de ponta e Doppler colorido para diagnóstico preciso em diversas regiões do corpo."
+    breadcrumbCurrent="Ultrassonografia Geral"
+    imageSrc="/assets/HeroUltrassonografiaGeral.png"
+    imageAlt="Ultrassonografia geral realizada pelo Dr. Victor Mol"
+    mediaClass="service-hero__media--square-art"
+  />
+
+  <div class="service-page layout-shell">
+    <article class="service-article" itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="headline" content="Ultrassonografia Geral" />
+
+      <section class="service-section" aria-labelledby="o-que-e-ultrassonografia-geral" data-motion-stagger>
+        <h2 class="service-section__title" id="o-que-e-ultrassonografia-geral" data-motion>
+          O que é a Ultrassonografia Geral?
+        </h2>
+        <p class="service-section__lead" data-motion>
+          A ultrassonografia é um exame de imagem que utiliza ondas sonoras para visualizar estruturas internas do corpo, sendo uma ferramenta essencial na medicina diagnóstica.
+        </p>
+        <p data-motion>
+          Na clínica Le Derme, realizo uma ampla gama de exames de ultrassom, abrangendo áreas como abdome superior e total, pelve, vias urinárias, próstata (suprapúbica e transretal), pênis, bolsa escrotal, mamas e parede abdominal.
+        </p>
+      </section>
+
+      <ServiceInlineCta
+        text="Precisa de ultrassonografia? Agende seu exame com orientação clara desde a marcação."
+      />
+
+      <section class="service-section" aria-labelledby="indicacoes" data-motion-stagger>
+        <h2 class="service-section__title" id="indicacoes" data-motion>Indicações</h2>
+        <p data-motion>
+          As indicações para a realização desses exames variam conforme a necessidade médica, podendo incluir investigação de dores, alterações laboratoriais, nódulos, inflamações ou avaliações rotineiras.
+        </p>
+      </section>
+
+      <section class="service-section" aria-labelledby="como-sao-realizados" data-motion-stagger>
+        <h2 class="service-section__title" id="como-sao-realizados" data-motion>
+          Como os Exames São Realizados?
+        </h2>
+        <p data-motion>
+          Utilizo tecnologia de ponta, incluindo Doppler colorido, para potencializar a avaliação diagnóstica em cada um dos nossos exames. Isso permite uma análise mais precisa do fluxo sanguíneo e das condições dos órgãos examinados.
+        </p>
+      </section>
+
+      <section class="service-section" aria-labelledby="preparo-exames" data-motion-stagger>
+        <h2 class="service-section__title" id="preparo-exames" data-motion>
+          Preparo para os Exames
+        </h2>
+        <p data-motion>
+          É importante ressaltar que alguns exames de ultrassonografia exigem preparo prévio, como jejum ou bexiga cheia.
+        </p>
+        <aside class="service-callout" data-motion>
+          <p>
+            Nesse sentido, as orientações específicas são sempre passadas no momento da marcação do exame, assegurando que você esteja devidamente pronto para obter resultados confiáveis.
+          </p>
+        </aside>
+      </section>
+    </article>
+  </div>
+
+  <ServiceFinalCta
+    title="Ultrassonografia com precisão e cuidado"
+    text="Agende sua ultrassonografia geral na clínica Le Derme. Tecnologia avançada, laudo detalhado e acompanhamento desde o preparo até o resultado."
+  />
+</BaseLayout>

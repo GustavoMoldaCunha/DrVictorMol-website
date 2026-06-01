@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import '../styles/service-page.css'
+
+import ServicePageHero from '../components/service-page/ServicePageHero.astro'
+import ServiceInlineCta from '../components/service-page/ServiceInlineCta.astro'
+import ServiceFinalCta from '../components/service-page/ServiceFinalCta.astro'
+import { serviceStructuredData } from '../data/structured-data'
+
+const pageTitle = 'Doppler Peniano com Injeção Cavernosa | Dr. Victor Mol'
+const pageDescription =
+  'Doppler peniano com injeção cavernosa para investigação de disfunção erétil. Exame com avaliação vascular precisa e diagnóstico orientado pelo Dr. Victor Mol.'
+const heroImage = '/assets/HeroDoppler.webp'
+
+const structuredData = serviceStructuredData({
+  pathname: '/doppler-peniano-com-injecao-cavernosa/',
+  name: 'Doppler Peniano com Injeção Cavernosa',
+  description: pageDescription,
+  imagePath: heroImage,
+  breadcrumbLabel: 'Doppler Peniano com Injeção Cavernosa',
+})
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageClass="page--service"
+  structuredData={structuredData}
+  ogImage={heroImage}
+  preloadImages={[heroImage]}
+>
+
+  <ServicePageHero
+    title="Doppler Peniano com Injeção Cavernosa"
+    subtitle="Exame especializado para investigar disfunção erétil e outras alterações da função peniana com avaliação vascular precisa."
+    breadcrumbCurrent="Doppler Peniano"
+    imageSrc="/assets/HeroDoppler.webp"
+    imageAlt="Doppler peniano com injeção cavernosa realizado pelo Dr. Victor Mol"
+    mediaClass="service-hero__media--edge-right service-hero__media--portrait-float service-hero__media--doppler"
+  />
+
+  <div class="service-page layout-shell">
+    <article class="service-article" itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="headline" content="Doppler Peniano com Injeção Cavernosa" />
+
+      <section class="service-section" aria-labelledby="o-que-e-doppler-peniano" data-motion-stagger>
+        <h2 class="service-section__title" id="o-que-e-doppler-peniano" data-motion>
+          O que é o Doppler Peniano?
+        </h2>
+        <p class="service-section__lead" data-motion>
+          O Doppler peniano com injeção cavernosa é um exame fundamental na investigação de causas de disfunção erétil e outras alterações na função peniana. Este procedimento é essencial para aqueles que enfrentam dificuldades de ereção, ajudando a identificar a origem do problema, seja ela psicogênica, arterial, cavernosa ou mista.
+        </p>
+      </section>
+
+      <ServiceInlineCta
+        text="Precisa realizar o Doppler peniano? Agende uma avaliação com orientação especializada."
+      />
+
+      <section class="service-section" aria-labelledby="como-e-realizado" data-motion-stagger>
+        <h2 class="service-section__title" id="como-e-realizado" data-motion>
+          Como é Realizado o Exame?
+        </h2>
+        <p data-motion>
+          A execução do exame começa com a aplicação de uma substância vasoativa diretamente no pênis, que provoca uma ereção controlada. Após essa fase inicial, realiza-se a medição dos principais parâmetros vasculares que permitem identificar as possíveis causas da disfunção erétil.
+        </p>
+        <p data-motion>
+          Em casos de doença de Peyronie, medições adicionais são feitas para auxiliar na definição da melhor abordagem terapêutica.
+        </p>
+      </section>
+
+      <section class="service-section" aria-labelledby="importancia-avaliacao" data-motion-stagger>
+        <h2 class="service-section__title" id="importancia-avaliacao" data-motion>
+          Importância da Avaliação Médica
+        </h2>
+        <p data-motion>
+          A realização do Doppler peniano deve sempre estar alinhada com as indicações do médico urologista. Somente um profissional capacitado deve solicitar o exame conforme a necessidade individual do paciente.
+        </p>
+        <aside class="service-callout" data-motion>
+          <p>
+            Este exame proporciona um diagnóstico preciso, o que é vital para determinar o tratamento mais adequado e eficaz.
+          </p>
+        </aside>
+      </section>
+
+      <ServiceInlineCta
+        text="Com indicação médica? Entre em contato e agende seu exame com segurança e discrição."
+        buttonLabel="Quero agendar uma consulta"
+      />
+    </article>
+  </div>
+
+  <ServiceFinalCta
+    title="Diagnóstico preciso para o tratamento certo"
+    text="Agende o Doppler peniano com injeção cavernosa. Avaliação especializada, condução segura do exame e laudo detalhado para apoiar a conduta do seu urologista."
+  />
+</BaseLayout>

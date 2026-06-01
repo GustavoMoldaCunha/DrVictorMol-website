@@ -1,0 +1,135 @@
+---
+import '../styles/global.css'
+import Navbar from '../components/Navbar.astro'
+import Footer from '../components/Footer.astro'
+import WhatsAppFloat from '../components/WhatsAppFloat.astro'
+import {
+  DEFAULT_OG_IMAGE,
+  SITE_LANGUAGE,
+  SITE_LOCALE,
+  SITE_NAME,
+} from '../config/site'
+import { absoluteUrl, canonicalFromPath } from '../lib/seo'
+
+interface Props {
+  title: string
+  description?: string
+  pageClass?: string
+  ogImage?: string
+  ogType?: 'website' | 'article'
+  noindex?: boolean
+  structuredData?: Record<string, unknown>
+  /** Recursos para preload (LCP) — caminhos absolutos a partir de / */
+  preloadImages?: string[]
+}
+
+const {
+  title,
+  description,
+  pageClass = '',
+  ogImage = DEFAULT_OG_IMAGE,
+  ogType = 'website',
+  noindex = false,
+  structuredData,
+  preloadImages = [],
+} = Astro.props
+
+const canonical = canonicalFromPath(Astro.url.pathname)
+const ogImageUrl = absoluteUrl(ogImage)
+const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'
+---
+
+<html lang={SITE_LANGUAGE}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content={robotsContent} />
+    <meta name="theme-color" content="#101A2B" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content={SITE_NAME} />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="icon" href="/favicon-light.svg" type="image/svg+xml" media="(prefers-color-scheme: light)" />
+    <link rel="icon" href="/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon-light.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon-light.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script is:inline>
+      (function () {
+        var mq = window.matchMedia('(prefers-color-scheme: dark)');
+        function setFavicon(dark) {
+          var href = dark ? '/favicon-dark.svg' : '/favicon-light.svg';
+          var existing = document.querySelector('link[rel="icon"]:not([media])');
+          if (existing) existing.setAttribute('href', href);
+        }
+        setFavicon(mq.matches);
+        if (typeof mq.addEventListener === 'function') {
+          mq.addEventListener('change', function () { setFavicon(mq.matches); });
+        } else if (typeof mq.addListener === 'function') {
+          mq.addListener(function () { setFavicon(mq.matches); });
+        }
+      })();
+    </script>
+
+    <link rel="canonical" href={canonical} />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+
+    <meta property="og:locale" content={SITE_LOCALE} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={`${SITE_NAME} — radiologista`} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={`${SITE_NAME} — radiologista`} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&family=Josefin+Sans:wght@300;500&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&family=Josefin+Sans:wght@300;500&display=swap"
+      />
+    </noscript>
+
+    {
+      preloadImages.map((src) => (
+        <link rel="preload" as="image" href={src} fetchpriority="high" />
+      ))
+    }
+
+    {structuredData && (
+      <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    )}
+  </head>
+
+  <body>
+    <Navbar />
+
+    <main class:list={['page', pageClass]}>
+      <slot />
+    </main>
+
+    <Footer />
+    <WhatsAppFloat />
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/testimonials.js"></script>
+    <script src="../scripts/motion.js"></script>
+  </body>
+</html>

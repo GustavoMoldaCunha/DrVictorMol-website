@@ -1,0 +1,204 @@
+/* ===================== LOCATIONS SECTION ===================== */
+.locations {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .locations__title {
+    width: 100%;
+    text-align: left;
+  }
+
+  .locations__presencial {
+    border-top: 1px solid var(--section-divider-color);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-15);
+    align-items: flex-start;
+    padding: var(--section-divider-pad) 0 0;
+    width: 100%;
+  }
+
+  .locations__sub-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-24);
+    font-weight: 300;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+
+  .locations__map {
+    display: block;
+    border: 1px solid var(--color-quaternary);
+    height: 271px;
+    border-radius: var(--radius-25);
+    width: 100%;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .locations__map:focus-visible {
+    outline: 2px solid var(--color-tertiary);
+    outline-offset: 2px;
+  }
+
+  .locations__map img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+
+  .locations__address {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-10);
+    align-items: flex-start;
+    padding: var(--sp-10);
+    white-space: nowrap;
+    font-style: normal;
+  }
+
+  .locations__clinic-name {
+    font-family: var(--font-display);
+    font-size: var(--fs-20);
+    font-weight: 300;
+    color: var(--color-text);
+  }
+
+  .locations__clinic-address {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: 400;
+    line-height: var(--lh-body);
+    color: var(--color-text);
+  }
+
+  .locations__bottom {
+    border-top: 1px solid var(--section-divider-color);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: stretch;
+    padding: 0 var(--sp-10) var(--sp-10);
+    width: 100%;
+  }
+
+  .locations__domiciliar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-10);
+    min-height: 130px;
+    align-items: flex-start;
+    padding: var(--sp-30) 0;
+    min-width: 0;
+  }
+
+  .locations__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-15);
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 5px;
+  }
+
+  .locations__pin-icon {
+    width: 32px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+
+  .locations__tag {
+    background: var(--color-secondary);
+    color: var(--color-background);
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    font-weight: 400;
+    line-height: var(--lh-ui);
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .locations__online {
+    border-left: 1px solid var(--section-divider-color);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-25);
+    min-height: 130px;
+    align-items: flex-start;
+    padding: var(--sp-30) var(--sp-25) 0;
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  .locations__online-title {
+    font-family: var(--font-display);
+    font-size: var(--fs-24);
+    font-weight: 300;
+    color: var(--color-text);
+  }
+
+  .locations__online-note {
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    font-weight: 400;
+    line-height: var(--lh-body);
+    color: #000000;
+    white-space: nowrap;
+  }
+
+/* ===================== RESPONSIVE — TABLET ===================== */
+@media (max-width: 1330px) {
+  .locations__bottom {
+    grid-template-columns: 1fr;
+    gap: var(--sp-20);
+  }
+
+  .locations__online {
+    border-left: none;
+    border-top: 1px solid var(--section-divider-color);
+    padding: var(--sp-20) 0 0;
+    min-height: 0;
+  }
+
+  .locations__domiciliar {
+    min-height: 0;
+  }
+
+  .locations__tags { flex-wrap: wrap; }
+}
+
+@media (max-width: 768px) {
+  .locations__title {
+    font-size: clamp(28px, 7vw, 36px);
+    line-height: 1.1;
+    text-align: left;
+  }
+
+  .locations__map {
+    height: 180px;
+  }
+
+  .locations__tags {
+    flex-wrap: wrap;
+    gap: var(--sp-10);
+  }
+
+  .locations__address,
+  .locations__clinic-address,
+  .locations__online {
+    white-space: normal;
+    font-size: var(--text-small);
+    line-height: var(--lh-snug);
+  }
+}

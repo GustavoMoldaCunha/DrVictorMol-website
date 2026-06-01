@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import '../styles/service-page.css'
+
+import ServicePageHero from '../components/service-page/ServicePageHero.astro'
+import ServiceInlineCta from '../components/service-page/ServiceInlineCta.astro'
+import ServiceFinalCta from '../components/service-page/ServiceFinalCta.astro'
+import { serviceStructuredData } from '../data/structured-data'
+
+const pageTitle = 'Ultrassonografia para Guiar Procedimentos | Dr. Victor Mol'
+const pageDescription =
+  'Ultrassonografia para guiar procedimentos estéticos e cirúrgicos com maior precisão e segurança. Infusões, drenagens e tratamento de complicações com o Dr. Victor Mol.'
+const heroImage = '/assets/HeroUltrassonografiaParaGuiarProcedimentos.webp'
+
+const structuredData = serviceStructuredData({
+  pathname: '/ultrassonografia-para-guiar-procedimentos/',
+  name: 'Ultrassonografia para Guiar Procedimentos',
+  description: pageDescription,
+  imagePath: heroImage,
+  breadcrumbLabel: 'Ultrassonografia para Guiar Procedimentos',
+})
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  pageClass="page--service"
+  structuredData={structuredData}
+  ogImage={heroImage}
+  preloadImages={[heroImage]}
+>
+
+  <ServicePageHero
+    title="Ultrassonografia para Guiar Procedimentos"
+    subtitle="Ultrassom como ferramenta de precisão para procedimentos estéticos e cirúrgicos com mais segurança e controle."
+    breadcrumbCurrent="Ultrassonografia para Guiar Procedimentos"
+    imageSrc="/assets/HeroUltrassonografiaParaGuiarProcedimentos.webp"
+    imageAlt="Ultrassonografia para guiar procedimentos realizada pelo Dr. Victor Mol"
+    mediaClass="service-hero__media--edge-right service-hero__media--domiciliar"
+  />
+
+  <div class="service-page layout-shell">
+    <article class="service-article" itemscope itemtype="https://schema.org/Article">
+      <meta itemprop="headline" content="Ultrassonografia para Guiar Procedimentos" />
+
+      <section class="service-section" aria-labelledby="ultrassom-ferramenta-precisao" data-motion-stagger>
+        <h2 class="service-section__title" id="ultrassom-ferramenta-precisao" data-motion>
+          Ultrassom como Ferramenta de Precisão
+        </h2>
+        <p class="service-section__lead" data-motion>
+          A utilização do ultrassom como guia para procedimentos estéticos e cirúrgicos tem se mostrado uma estratégia crucial para aumentar a segurança e a precisão dos processos. Ao permitir uma visualização detalhada das estruturas subjacentes, essa técnica reduz significativamente os riscos envolvidos.
+        </p>
+      </section>
+
+      <section class="service-section" aria-labelledby="infusoes-drenagens" data-motion-stagger>
+        <h2 class="service-section__title" id="infusoes-drenagens" data-motion>
+          Infusões e Drenagens com Segurança
+        </h2>
+        <p data-motion>
+          O ultrassom é uma ferramenta valiosa para guiar a injeção de preenchedores e bioestimuladores, particularmente em áreas de maior risco, tornando esses procedimentos mais controlados e confiáveis.
+        </p>
+        <p data-motion>
+          Além disso, o ultrassom é um método de muita ajuda no tratamento de complicações estéticas, como a infusão de hialuronidase para reverter preenchedores indesejados, garantindo mais assertividade e menor desperdício de produtos.
+        </p>
+        <p data-motion>
+          Outra finalidade do ultrassom é orientar punções e drenagens de seromas e coleções pós-operatórias. A intervenção com ultrassom não apenas otimiza os resultados, mas também garante que as complicações possam ser tratadas de forma eficaz e segura.
+        </p>
+        <aside class="service-callout" data-motion>
+          <p>
+            Com essa abordagem estruturada, tanto os procedimentos estéticos quanto os cirúrgicos se tornam mais previsíveis e seguros, proporcionando melhores resultados e maior satisfação aos pacientes.
+          </p>
+        </aside>
+      </section>
+
+      <ServiceInlineCta
+        text="Deseja aumentar a segurança dos seus procedimentos com o ultrassom? Entre em contato para mais informações."
+      />
+
+      <section class="service-section" aria-labelledby="como-e-onde" data-motion-stagger>
+        <h2 class="service-section__title" id="como-e-onde" data-motion>Como e Onde?</h2>
+        <p data-motion>
+          Com meu aparelho de ultrassom portátil de altíssima qualidade e eficiência, posso realizar esses procedimentos na clínica Le Derme, no consultório do médico assistente e até mesmo no centro cirúrgico. Os valores variam de acordo com a distância e o tempo do procedimento.
+        </p>
+      </section>
+    </article>
+  </div>
+
+  <ServiceFinalCta
+    title="Mais precisão e segurança nos seus procedimentos"
+    text="Agende o suporte com ultrassonografia para guiar procedimentos. Atendimento na clínica Le Derme, consultório ou centro cirúrgico, conforme a necessidade do caso."
+  />
+</BaseLayout>

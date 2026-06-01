@@ -1,0 +1,51 @@
+---
+import WhatsAppCta from './WhatsAppCta.astro';
+---
+
+<header class="header layout-shell" id="inicio">
+    <section class="hero" aria-label="Seção principal">
+      <div class="hero__bg" aria-hidden="true"></div>
+
+      <div class="hero__decor-clip" aria-hidden="true">
+        <div class="hero__bg-pattern">
+          <img src="/assets/Círculo decorativo.svg" alt="" />
+        </div>
+      </div>
+
+      <div class="hero__body">
+        <div class="hero__lead" data-motion-immediate-stagger>
+          <h1 class="hero__title" data-motion>
+            <span class="hero__title-line">Tecnologia e Experiência</span>
+            <span class="hero__title-line">a serviço de um</span>
+            <span class="hero__title-line">diagnóstico seguro</span>
+          </h1>
+          <p class="hero__subtitle" data-motion>
+            Eu sou o <span class="hero__name">Dr. Victor Mol</span>, radiologista, e ajudo pacientes e clínicas a obter diagnósticos claros, sem processos complicados, unindo experiência clínica e tecnologia em radiologia.
+          </p>
+          <div class="hero__cta-wrap" data-motion>
+            <WhatsAppCta variant="hero" />
+          </div>
+        </div>
+
+        <div class="hero__stage" data-motion-immediate>
+          <div class="hero__decor-stage" aria-hidden="true">
+            <div class="hero__decor">
+              <img src="/assets/Círculo decorativo.svg" alt="" />
+            </div>
+          </div>
+          <div class="hero__image">
+            <img
+              class="hero__photo"
+              src="/assets/Victor.png"
+              alt="Dr. Victor Mol, radiologista"
+              width="480"
+              height="640"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </header>

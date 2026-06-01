@@ -1,0 +1,175 @@
+/* ===================== MOTION SYSTEM ===================== */
+:root {
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-duration: 0.65s;
+  --motion-duration-fast: 0.45s;
+  --motion-distance: 20px;
+  --motion-distance-sm: 14px;
+  --motion-stagger-step: 90ms;
+  --motion-lift: -4px;
+  --motion-scale: 1.02;
+}
+
+/* --- Scroll reveal --- */
+[data-motion] {
+  opacity: 0;
+  transform: translate3d(0, var(--motion-distance), 0);
+  transition:
+    opacity var(--motion-duration) var(--motion-ease-out),
+    transform var(--motion-duration) var(--motion-ease-out);
+  transition-delay: var(--motion-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+[data-motion].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+[data-motion='fade'] {
+  transform: none;
+}
+
+[data-motion='fade'].is-visible {
+  transform: none;
+}
+
+[data-motion='subtle'] {
+  --motion-distance: var(--motion-distance-sm);
+}
+
+[data-motion-stagger] > [data-motion] {
+  opacity: 0;
+  transform: translate3d(0, var(--motion-distance), 0);
+}
+
+[data-motion-stagger].is-ready > [data-motion].is-visible,
+[data-motion-stagger] > [data-motion].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* --- Hover: lift --- */
+.motion-hover-lift {
+  transition: transform var(--motion-duration-fast) var(--motion-ease-out);
+}
+
+.motion-hover-lift:hover {
+  transform: translate3d(0, var(--motion-lift), 0);
+}
+
+/* --- Hover: scale (images) --- */
+.motion-hover-scale {
+  overflow: hidden;
+}
+
+.motion-hover-scale > img,
+.motion-hover-scale img {
+  transition: transform var(--motion-duration-fast) var(--motion-ease-out);
+  transform-origin: center center;
+}
+
+.motion-hover-scale:hover > img,
+.motion-hover-scale:hover img {
+  transform: scale(var(--motion-scale));
+}
+
+/* --- Links --- */
+.motion-link {
+  transition: opacity var(--motion-duration-fast) var(--motion-ease), color var(--motion-duration-fast) var(--motion-ease);
+}
+
+.motion-link:hover {
+  opacity: 0.78;
+}
+
+/* --- Buttons --- */
+.motion-btn {
+  transition:
+    transform var(--motion-duration-fast) var(--motion-ease-out),
+    background-color var(--motion-duration-fast) var(--motion-ease),
+    opacity var(--motion-duration-fast) var(--motion-ease);
+}
+
+.motion-btn:hover {
+  transform: translateY(-2px);
+}
+
+.motion-btn:active {
+  transform: translateY(0);
+}
+
+/* --- Navbar scroll --- */
+.navbar-fixed-wrap {
+  transition: padding var(--motion-duration-fast) var(--motion-ease-out);
+}
+
+.navbar-fixed-wrap .navbar {
+  transition:
+    box-shadow var(--motion-duration-fast) var(--motion-ease-out),
+    transform var(--motion-duration-fast) var(--motion-ease-out);
+}
+
+.navbar-fixed-wrap.is-scrolled {
+  padding-top: clamp(8px, 1.5vw, 12px);
+}
+
+.navbar-fixed-wrap.is-scrolled .navbar {
+  box-shadow: 0 12px 40px rgba(11, 31, 58, 0.14);
+}
+
+html.is-mobile-menu-open {
+  overflow: hidden;
+}
+
+/* --- Overflow guard during reveal --- */
+.services,
+.about,
+.locations,
+footer {
+  overflow-x: clip;
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-duration: 1ms;
+    --motion-duration-fast: 1ms;
+    --motion-stagger-step: 0ms;
+    --motion-lift: 0;
+    --motion-scale: 1;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-motion],
+  [data-motion-stagger] > [data-motion] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .motion-hover-lift:hover,
+  .motion-hover-scale:hover > img,
+  .motion-hover-scale:hover img,
+  .motion-btn:hover {
+    transform: none;
+  }
+
+  .motion-link:hover {
+    opacity: 1;
+  }
+
+  .navbar-fixed-wrap,
+  .navbar-fixed-wrap .navbar {
+    transition: none;
+  }
+
+  html.is-mobile-menu-open {
+    overflow: auto;
+  }
+}

@@ -1,0 +1,93 @@
+/* ===================== DESIGN TOKENS ===================== */
+:root {
+    --color-primary: #0b1f3a;
+    --color-secondary: #1f5e7a;
+    --color-tertiary: #3e8fb0;
+    --color-quaternary: #6b5e55;
+    --color-background: #f5f7fa;
+    --color-text: #101a2b;
+    --color-surface-dark: #101a2b;
+    --color-white: #fbfbfb;
+    --color-light: #f5f5f5;
+
+    --font-display: 'Josefin Sans', serif;
+    --font-body: 'Cabin', sans-serif;
+
+    /* --- Headings (unchanged) --- */
+    --fs-48: 48px;
+    --fs-34: 34px;
+    --fs-24: 24px;
+
+    /* --- Body & UI scale (premium, fluid) --- */
+    --fs-22: 22px;
+    --fs-20: clamp(1.1875rem, 0.5vw + 1.1rem, 1.3125rem);   /* 19–21px · cards, leads */
+    --fs-16: clamp(1.0625rem, 0.4vw + 0.98rem, 1.125rem);   /* 17–18px · UI, CTAs */
+    --fs-15: clamp(1rem, 0.35vw + 0.94rem, 1.0625rem);      /* 16–17px · body */
+    --fs-14: clamp(0.9375rem, 0.25vw + 0.88rem, 1rem);      /* 15–16px · small, nav, captions */
+
+    /* Semantic aliases */
+    --text-body: var(--fs-15);
+    --text-body-lg: var(--fs-16);
+    --text-small: var(--fs-14);
+    --text-lead: var(--fs-20);
+    --text-ui: var(--fs-16);
+    --text-caption: var(--fs-14);
+
+    /* Line heights */
+    --lh-tight: 1.2;
+    --lh-snug: 1.4;
+    --lh-ui: 1.5;
+    --lh-body: 1.65;
+    --lh-relaxed: 1.72;
+
+    /* Vertical rhythm */
+    --space-after-heading: clamp(12px, 2vw, 18px);
+    --space-paragraph: clamp(10px, 1.5vw, 14px);
+    --stack-title-body: var(--sp-20);
+    --stack-section-copy: var(--sp-15);
+
+    --radius-50: 50px;
+    --radius-30: 30px;
+    --radius-25: 25px;
+    --radius-20: 20px;
+
+    --sp-100: 100px;
+    --sp-75: 75px;
+    --sp-40: 40px;
+    --sp-30: 30px;
+    --sp-25: 25px;
+    --sp-20: 20px;
+    --sp-15: 15px;
+    --sp-10: 10px;
+
+    --layout-max-width: 1321px;
+    --layout-gutter: clamp(16px, 4vw, 40px);
+    --navbar-min-height: 92px;
+    --navbar-fixed-pad-top: clamp(12px, 2.5vw, 20px);
+    --hero-navbar-gap: clamp(28px, 3.5vw, 40px);
+    /* Projeção do retrato (Figma ~64px em 1321px) — refinado no Hero desktop */
+    --hero-image-overlap: clamp(36px, 5vw, 64px);
+    --hero-content-pad-inline: clamp(24px, 4vw, 56px);
+    --page-top-offset: calc(var(--navbar-fixed-pad-top) + var(--navbar-min-height) + var(--hero-navbar-gap));
+    --page-top-offset-mobile: calc(var(--navbar-fixed-pad-top) + var(--navbar-min-height) + clamp(16px, 4vw, 24px));
+
+    --section-gap: var(--sp-40);
+    --section-stack-gap: var(--sp-100);
+    --section-divider-pad: clamp(48px, 5vw, 56px);
+    --section-divider-color: color-mix(in srgb, var(--color-quaternary) 35%, transparent);
+  }
+
+@media (max-width: 768px) {
+  :root {
+    --hero-content-pad-inline: clamp(18px, 5vw, 24px);
+    --hero-image-overlap: 0;
+    --layout-gutter: clamp(14px, 4vw, 20px);
+    --section-stack-gap: clamp(64px, 12vw, 80px);
+
+    /* Slightly larger floor on small screens — avoids “tiny” copy */
+    --fs-14: clamp(0.9375rem, 2.8vw + 0.72rem, 1rem);
+    --fs-15: clamp(1rem, 3vw + 0.75rem, 1.0625rem);
+    --fs-16: clamp(1.0625rem, 3.2vw + 0.78rem, 1.125rem);
+    --fs-20: clamp(1.125rem, 3.5vw + 0.82rem, 1.25rem);
+  }
+}
