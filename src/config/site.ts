@@ -12,7 +12,7 @@ export const SITE_TAGLINE = 'Radiologista — Ultrassonografia e Segunda Opiniã
 export const SITE_LOCALE = 'pt_BR';
 export const SITE_LANGUAGE = 'pt-BR';
 
-export const DEFAULT_OG_IMAGE = '/assets/Victor.png';
+export const DEFAULT_OG_IMAGE = '/assets/hero/Victor.webp';
 
 export const CONTACT = {
   email: 'contato@victormol.com.br',

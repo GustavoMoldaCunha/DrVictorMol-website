@@ -16,7 +16,7 @@ export const physicianSchema = {
   '@id': physicianId,
   name: SITE_NAME,
   url: SITE_URL,
-  image: absoluteUrl('/assets/Victor.png'),
+  image: absoluteUrl('/assets/hero/Victor.webp'),
   medicalSpecialty: ['Radiology', 'Neuroradiology'],
   telephone: CONTACT.phoneE164,
   email: CONTACT.email,
@@ -29,7 +29,7 @@ const clinicSchema = {
   '@id': clinicId,
   name: CLINIC.name,
   url: CLINIC.mapsUrl,
-  image: absoluteUrl('/assets/Maps.png'),
+  image: absoluteUrl('/assets/locations/Maps.png'),
   telephone: CONTACT.phoneE164,
   email: CONTACT.email,
   address: {

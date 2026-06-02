@@ -8,7 +8,7 @@ const sectionHref = (id: string) => `${home}#${id}`;
 <footer>
     <div class="footer__bg" aria-hidden="true"></div>
     <div class="footer__bg-pattern" aria-hidden="true">
-      <img src="/assets/Círculo decorativo.svg" alt="" />
+      <img src="/assets/shared/Círculo decorativo.svg" alt="" />
     </div>
 
     <div class="footer__top layout-shell" data-motion-stagger>
@@ -18,12 +18,12 @@ const sectionHref = (id: string) => `${home}#${id}`;
         <a href={home} class="footer__logo motion-link" aria-label="Dr. Victor Mol - Página inicial">
           <img
             class="footer__logo-icon"
-            src="/assets/LogoIconeClaro.svg"
+            src="/assets/brand/LogoIconeClaro.svg"
             alt="Logo ícone Dr. Victor Mol"
           />
           <img
             class="footer__logo-text"
-            src="/assets/LogoTextoClaro.webp"
+            src="/assets/brand/LogoTextoClaro.webp"
             alt="Dr. Victor Mol"
           />
         </a>
@@ -55,7 +55,7 @@ const sectionHref = (id: string) => `${home}#${id}`;
       <address class="footer__col footer__col--contact" data-motion>
         <p class="footer__col-title">Contato</p>
         <a class="footer__contact-link motion-link" href="mailto:contato@victormol.com.br">
-          <img class="footer__contact-icon" src="/assets/footer-icon-email.svg" alt="" width="16" height="16" aria-hidden="true" />
+          <img class="footer__contact-icon" src="/assets/footer/footer-icon-email.svg" alt="" width="16" height="16" aria-hidden="true" />
           <span>contato@victormol.com.br</span>
         </a>
         <a
@@ -64,7 +64,7 @@ const sectionHref = (id: string) => `${home}#${id}`;
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img class="footer__contact-icon" src="/assets/footer-icon-instagram.svg" alt="" width="16" height="16" aria-hidden="true" />
+          <img class="footer__contact-icon" src="/assets/footer/footer-icon-instagram.svg" alt="" width="16" height="16" aria-hidden="true" />
           <span>@dr_victormol</span>
         </a>
         <a
@@ -74,7 +74,7 @@ const sectionHref = (id: string) => `${home}#${id}`;
           rel="noopener noreferrer"
           aria-label={`WhatsApp ${WHATSAPP_PHONE_DISPLAY}`}
         >
-          <img class="footer__contact-icon" src="/assets/footer-icon-phone.svg" alt="" width="16" height="16" aria-hidden="true" />
+          <img class="footer__contact-icon" src="/assets/footer/footer-icon-phone.svg" alt="" width="16" height="16" aria-hidden="true" />
           <span>{WHATSAPP_PHONE_DISPLAY}</span>
         </a>
       </address>
