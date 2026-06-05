@@ -1,4 +1,5 @@
 ---
+import DecorativeCircle from '../DecorativeCircle.astro';
 import WhatsAppCta from '../WhatsAppCta.astro';
 
 interface Props {
@@ -17,7 +18,7 @@ const {
 <div class="service-final-cta-wrap layout-shell">
   <section class="service-final-cta" aria-labelledby="service-final-cta-title" data-motion>
     <div class="service-cta__pattern" aria-hidden="true">
-      <img src="/assets/shared/Círculo decorativo.svg" alt="" />
+      <DecorativeCircle />
     </div>
     <div class="service-final-cta__inner">
       <h2 class="service-final-cta__title" id="service-final-cta-title">{title}</h2>
