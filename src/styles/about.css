@@ -826,8 +826,14 @@
     background: none;
     outline: none;
     cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
     -webkit-appearance: none;
     appearance: none;
+  }
+
+  .testimonials__nav-btn:focus:not(:focus-visible) {
+    outline: none;
   }
 
   .testimonials__nav-btn:focus-visible {

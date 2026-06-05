@@ -55,15 +55,13 @@
     }, duration);
   }
 
-  prevBtn.addEventListener('click', function () {
-    goTo('prev');
-  });
+  function preventFocusRingOnClick(btn) {
+    btn.addEventListener('mousedown', function (e) {
+      e.preventDefault();
+    });
+  }
 
-  nextBtn.addEventListener('click', function () {
-    goTo('next');
-  });
-
-  section.addEventListener('keydown', function (e) {
+  function onNavKeydown(e) {
     if (e.key === 'ArrowLeft') {
       e.preventDefault();
       goTo('prev');
@@ -72,5 +70,19 @@
       e.preventDefault();
       goTo('next');
     }
+  }
+
+  preventFocusRingOnClick(prevBtn);
+  preventFocusRingOnClick(nextBtn);
+
+  prevBtn.addEventListener('click', function () {
+    goTo('prev');
   });
+
+  nextBtn.addEventListener('click', function () {
+    goTo('next');
+  });
+
+  prevBtn.addEventListener('keydown', onNavKeydown);
+  nextBtn.addEventListener('keydown', onNavKeydown);
 })();
