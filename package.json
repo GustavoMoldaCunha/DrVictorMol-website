@@ -9,7 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "optimize-images": "npx --yes -p sharp node scripts/optimize-images.mjs && npx --yes -p sharp node scripts/optimize-remaining.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

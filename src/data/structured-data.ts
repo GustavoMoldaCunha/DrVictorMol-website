@@ -29,7 +29,7 @@ const clinicSchema = {
   '@id': clinicId,
   name: CLINIC.name,
   url: CLINIC.mapsUrl,
-  image: absoluteUrl('/assets/locations/Maps.png'),
+  image: absoluteUrl('/assets/locations/Maps.webp'),
   telephone: CONTACT.phoneE164,
   email: CONTACT.email,
   address: {

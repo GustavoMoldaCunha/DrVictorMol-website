@@ -1,5 +1,6 @@
 ---
 import WhatsAppCta from './WhatsAppCta.astro';
+import DecorativeCircle from './DecorativeCircle.astro';
 ---
 
 <header class="header layout-shell" id="inicio">
@@ -8,7 +9,7 @@ import WhatsAppCta from './WhatsAppCta.astro';
 
       <div class="hero__decor-clip" aria-hidden="true">
         <div class="hero__bg-pattern">
-          <img src="/assets/shared/Círculo decorativo.svg" alt="" />
+          <DecorativeCircle />
         </div>
       </div>
 
@@ -30,7 +31,7 @@ import WhatsAppCta from './WhatsAppCta.astro';
         <div class="hero__stage" data-motion-immediate>
           <div class="hero__decor-stage" aria-hidden="true">
             <div class="hero__decor">
-              <img src="/assets/shared/Círculo decorativo.svg" alt="" />
+              <DecorativeCircle />
             </div>
           </div>
           <div class="hero__image">
@@ -40,6 +41,7 @@ import WhatsAppCta from './WhatsAppCta.astro';
               alt="Dr. Victor Mol, radiologista"
               width="480"
               height="640"
+              loading="eager"
               fetchpriority="high"
               decoding="async"
             />

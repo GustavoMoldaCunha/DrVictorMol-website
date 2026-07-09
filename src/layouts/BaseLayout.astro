@@ -10,6 +10,7 @@ import {
   SITE_NAME,
 } from '../config/site'
 import { absoluteUrl, canonicalFromPath } from '../lib/seo'
+import { preloadImageType } from '../lib/image-preload'
 
 interface Props {
   title: string
@@ -109,9 +110,18 @@ const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow, max-image-
     </noscript>
 
     {
-      preloadImages.map((src) => (
-        <link rel="preload" as="image" href={src} fetchpriority="high" />
-      ))
+      preloadImages.map((src) => {
+        const type = preloadImageType(src)
+        return (
+          <link
+            rel="preload"
+            as="image"
+            href={src}
+            fetchpriority="high"
+            {...(type ? { type } : {})}
+          />
+        )
+      })
     }
 
     {structuredData && (

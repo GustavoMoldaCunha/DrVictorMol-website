@@ -1,4 +1,5 @@
 ---
+import DecorativeCircle from './DecorativeCircle.astro';
 import { WHATSAPP_PHONE_DISPLAY, WHATSAPP_URL } from '../data/whatsapp';
 
 const home = import.meta.env.BASE_URL;
@@ -8,7 +9,7 @@ const sectionHref = (id: string) => `${home}#${id}`;
 <footer>
     <div class="footer__bg" aria-hidden="true"></div>
     <div class="footer__bg-pattern" aria-hidden="true">
-      <img src="/assets/shared/Círculo decorativo.svg" alt="" />
+      <DecorativeCircle />
     </div>
 
     <div class="footer__top layout-shell" data-motion-stagger>
@@ -20,11 +21,21 @@ const sectionHref = (id: string) => `${home}#${id}`;
             class="footer__logo-icon"
             src="/assets/brand/LogoIconeClaro.svg"
             alt="Logo ícone Dr. Victor Mol"
+            width="48"
+            height="48"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
           />
           <img
             class="footer__logo-text"
             src="/assets/brand/LogoTextoClaro.webp"
             alt="Dr. Victor Mol"
+            width="160"
+            height="48"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
           />
         </a>
         <p class="footer__credentials">CRM 52102755-7 | RQE 44662</p>
@@ -82,7 +93,16 @@ const sectionHref = (id: string) => `${home}#${id}`;
     </div>
 
     <div class="footer__bottom layout-shell" data-motion="fade">
-      <p>Designed by Linx Web Studio</p>
+      <p>
+        <a
+          class="motion-link"
+          href="https://lynx.app.br"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Criado por Lynx Web Studio
+        </a>
+      </p>
       <p>© Copyright 2025 – Todos os direitos reservados ao Dr. Victor Mol. Imagens meramente ilustrativas</p>
     </div>
 

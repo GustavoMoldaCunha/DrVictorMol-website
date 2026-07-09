@@ -11,7 +11,7 @@ interface Props {
 const { variant, label } = Astro.props;
 
 const defaultLabels: Record<Variant, string> = {
-  hero: 'Quero agendar uma consulta',
+  hero: 'Quero agendar meu exame',
   navbar: 'Quero agendar uma consulta',
   contact: 'Entre em contato',
 };
@@ -33,6 +33,10 @@ const ariaLabel = `${text} (abre no WhatsApp)`;
         class="hero__cta-icon"
         src="/assets/shared/cta-arrow.svg"
         alt=""
+        width="20"
+        height="20"
+        decoding="async"
+        fetchpriority="low"
         aria-hidden="true"
       />
       {text}
@@ -54,6 +58,10 @@ const ariaLabel = `${text} (abre no WhatsApp)`;
         class="btn-cta__icon"
         src="/assets/shared/cta-arrow.svg"
         alt=""
+        width="20"
+        height="20"
+        decoding="async"
+        fetchpriority="low"
         aria-hidden="true"
       />
     </a>

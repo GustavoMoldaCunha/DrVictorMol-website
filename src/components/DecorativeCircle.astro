@@ -1,0 +1,19 @@
+---
+/** Círculo decorativo compartilhado — baixa prioridade, fora do LCP. */
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<img
+  class={className}
+  src="/assets/shared/Círculo decorativo.svg"
+  alt=""
+  width="200"
+  height="200"
+  loading="lazy"
+  decoding="async"
+  fetchpriority="low"
+/>
