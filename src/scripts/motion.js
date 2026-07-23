@@ -36,12 +36,24 @@
     var wrap = document.querySelector('.navbar-fixed-wrap');
     if (!wrap) return;
 
+    var scheduled = false;
     var onScroll = function () {
-      wrap.classList.toggle('is-scrolled', window.scrollY > 20);
+      if (scheduled) return;
+      scheduled = true;
+
+      requestAnimationFrame(function () {
+        scheduled = false;
+        wrap.classList.toggle('is-scrolled', window.scrollY > 20);
+      });
     };
 
-    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
+
+    if (window.location.hash) {
+      requestAnimationFrame(function () {
+        wrap.classList.toggle('is-scrolled', window.scrollY > 20);
+      });
+    }
   }
 
   function initImmediate() {
