@@ -21,7 +21,7 @@ interface Props {
   noindex?: boolean
   structuredData?: Record<string, unknown>
   /** Recursos para preload (LCP) — caminhos absolutos a partir de / */
-  preloadImages?: string[]
+  preloadImages?: (string | { src: string; srcset: string; sizes: string })[]
 }
 
 const {
@@ -110,13 +110,16 @@ const robotsContent = noindex ? 'noindex, nofollow' : 'index, follow, max-image-
     </noscript>
 
     {
-      preloadImages.map((src) => {
+      preloadImages.map((image) => {
+        const src = typeof image === 'string' ? image : image.src
         const type = preloadImageType(src)
         return (
           <link
             rel="preload"
             as="image"
             href={src}
+            imagesrcset={typeof image === 'string' ? undefined : image.srcset}
+            imagesizes={typeof image === 'string' ? undefined : image.sizes}
             fetchpriority="high"
             {...(type ? { type } : {})}
           />

@@ -3,16 +3,18 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import '../styles/service-page.css'
 
 import ServicePageHero from '../components/service-page/ServicePageHero.astro'
+import WhatsAppCta from '../components/WhatsAppCta.astro'
 import ServiceInlineCta from '../components/service-page/ServiceInlineCta.astro'
 import ServiceFinalCta from '../components/service-page/ServiceFinalCta.astro'
-import { serviceStructuredData } from '../data/structured-data'
+import { domiciliaryStructuredData } from '../data/structured-data'
 
-const pageTitle = 'Ultrassonografia Domiciliar | Dr. Victor Mol'
+const pageTitle = 'Ultrassom Domiciliar em Niterói | Dr. Victor Mol'
 const pageDescription =
-  'Ultrassom domiciliar com estrutura completa para exames de ultrassonografia geral e dermatológica no conforto da sua casa. Agendamento personalizado com o Dr. Victor Mol.'
+  'Ultrassom domiciliar particular em Niterói e região, realizado por médico radiologista. Diversos exames com Doppler. Agendamento pelo WhatsApp.'
 const heroImage = '/assets/service-pages/HeroUltrassomDomiciliar.webp'
+const heroSrcSet = '/assets/service-pages/HeroUltrassomDomiciliar-480.webp 480w, /assets/service-pages/HeroUltrassomDomiciliar-960.webp 960w, /assets/service-pages/HeroUltrassomDomiciliar.webp 1512w'
 
-const structuredData = serviceStructuredData({
+const structuredData = domiciliaryStructuredData({
   pathname: '/ultrassonografia-domiciliar/',
   name: 'Ultrassonografia Domiciliar',
   description: pageDescription,
@@ -27,17 +29,28 @@ const structuredData = serviceStructuredData({
   pageClass="page--service"
   structuredData={structuredData}
   ogImage={heroImage}
-  preloadImages={[heroImage]}
+  preloadImages={[{ src: heroImage, srcset: heroSrcSet, sizes: '(max-width: 900px) 100vw, 460px' }]}
 >
 
   <ServicePageHero
-    title="Ultrassonografia Domiciliar"
-    subtitle="Exames de ultrassom geral e dermatológico realizados em casa, com toda a estrutura necessária para diagnóstico de alta qualidade."
+    title="Ultrassom domiciliar em Niterói e região"
+    subtitle={[
+      'Realize seu exame de ultrassom no conforto de casa, com atendimento realizado pessoalmente pelo Dr. Victor Mol, médico radiologista.',
+      'Atendimento particular em Niterói, Rio de Janeiro, São Gonçalo e Maricá, com equipamento portátil e possibilidade de utilização do Doppler colorido nos exames em que houver indicação.',
+    ]}
     breadcrumbCurrent="Ultrassonografia Domiciliar"
     imageSrc="/assets/service-pages/HeroUltrassomDomiciliar.webp"
     imageAlt="Ultrassonografia domiciliar realizada pelo Dr. Victor Mol"
+    imageWidth={1512}
+    imageHeight={1900}
+    imageSrcSet={heroSrcSet}
     mediaClass="service-hero__media--edge-right service-hero__media--domiciliar"
-  />
+  >
+    <div class="domiciliar-hero__cta" data-motion>
+      <WhatsAppCta variant="hero" label="AGENDAR ULTRASSOM DOMICILIAR PELO WHATSAPP" />
+      <p class="domiciliar-hero__note">Atendimento exclusivamente particular.</p>
+    </div>
+  </ServicePageHero>
 
   <div class="service-page layout-shell">
     <article class="service-article" itemscope itemtype="https://schema.org/Article">
@@ -45,10 +58,16 @@ const structuredData = serviceStructuredData({
 
       <section class="service-section" aria-labelledby="o-que-e-ultrassom-domiciliar" data-motion-stagger>
         <h2 class="service-section__title" id="o-que-e-ultrassom-domiciliar" data-motion>
-          O Que É o Ultrassom Domiciliar?
+          Ultrassom no conforto da sua casa
         </h2>
         <p class="service-section__lead" data-motion>
-          O ultrassom domiciliar é uma opção valiosa para pacientes que enfrentam dificuldades de locomoção ou que preferem a comodidade de realizar seus exames em casa. Neste tipo de procedimento, levo toda a estrutura necessária para garantir um exame de alta qualidade, tornando o processo mais acessível e confortável.
+          A ultrassonografia domiciliar em Niterói permite realizar diversos exames sem a necessidade de deslocamento até uma clínica ou hospital.
+        </p>
+        <p data-motion>
+          É uma opção especialmente conveniente para idosos, pacientes acamados, pessoas com dificuldade de locomoção, pacientes em recuperação e também para quem busca maior comodidade e privacidade.
+        </p>
+        <p data-motion>
+          O exame é realizado pessoalmente pelo Dr. Victor Mol, médico radiologista, desde a avaliação ultrassonográfica até a elaboração do laudo.
         </p>
       </section>
 
@@ -58,11 +77,103 @@ const structuredData = serviceStructuredData({
 
       <section class="service-section" aria-labelledby="quais-exames-domicilio" data-motion-stagger>
         <h2 class="service-section__title" id="quais-exames-domicilio" data-motion>
-          Quais Exames Podem Ser Feitos no Domicílio?
+          Quais exames podem ser realizados em casa?
+        </h2>
+        <div class="domiciliar-exams__grid" data-motion>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Abdome e vias urinárias</h3>
+            <ul class="service-list">
+              <li>Ultrassonografia de abdome total</li>
+              <li>Ultrassonografia de abdome superior</li>
+              <li>Ultrassonografia de rins e vias urinárias</li>
+              <li>Ultrassonografia da parede abdominal</li>
+            </ul>
+          </div>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Tireoide, mamas e tecidos superficiais</h3>
+            <ul class="service-list">
+              <li>Ultrassonografia da tireoide</li>
+              <li>Ultrassonografia das mamas</li>
+              <li>Ultrassonografia de partes moles</li>
+              <li>Ultrassonografia dermatológica</li>
+            </ul>
+          </div>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Pelve e exames ginecológicos</h3>
+            <ul class="service-list">
+              <li>Ultrassonografia pélvica</li>
+              <li>Ultrassonografia transvaginal</li>
+            </ul>
+          </div>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Próstata e bolsa escrotal</h3>
+            <ul class="service-list">
+              <li>Ultrassonografia da bolsa escrotal</li>
+              <li>Ultrassonografia da próstata por via abdominal</li>
+              <li>Ultrassonografia da próstata por via transretal</li>
+            </ul>
+          </div>
+        </div>
+        <p data-motion>
+          O Doppler colorido pode ser utilizado nos exames convencionais quando indicado, incluindo exames da tireoide, transvaginal, bolsa escrotal e outros exames convencionais quando pertinente.
+        </p>
+        <p data-motion>
+          Em relação aos exames especificamente vasculares, o serviço domiciliar oferece Doppler venoso para investigação de trombose venosa.
+        </p>
+        <div class="domiciliar-exams__request" data-motion>
+          <p>
+            Não encontrou o exame solicitado? Envie uma foto do pedido médico pelo WhatsApp para verificarmos se ele pode ser realizado no domicílio.
+          </p>
+          <WhatsAppCta variant="hero" label="ENVIAR PEDIDO PELO WHATSAPP" />
+        </div>
+      </section>
+
+      <section class="service-section" aria-labelledby="doppler-venoso-domiciliar" data-motion-stagger>
+        <h2 class="service-section__title" id="doppler-venoso-domiciliar" data-motion>
+          Doppler venoso domiciliar para investigação de trombose
         </h2>
         <p data-motion>
-          No ambiente domiciliar, podem ser realizados exames de ultrassom geral e ultrassom dermatológico. Esses exames são adequados para o conforto do paciente e não comprometem a qualidade da avaliação diagnóstica. Assim, garantimos que a experiência do paciente seja tanto prática quanto eficiente.
+          O exame de Doppler para investigação de trombose em casa permite avaliar o sistema venoso por ultrassonografia, sem deslocamento até uma clínica.
         </p>
+        <p data-motion>
+          O atendimento em casa pode ser especialmente útil para idosos, pacientes acamados e pessoas com dificuldade de locomoção, evitando a logística de transporte até uma clínica apenas para realização do exame.
+        </p>
+        <aside class="service-callout" aria-label="Observação" data-motion>
+          <p>
+            Na presença de sintomas importantes ou sinais de gravidade, a avaliação em serviço médico de urgência não deve ser adiada para realização do exame domiciliar.
+          </p>
+        </aside>
+        <div class="domiciliar-doppler__cta" data-motion>
+          <WhatsAppCta variant="hero" label="CONSULTAR DISPONIBILIDADE" />
+        </div>
+      </section>
+
+      <section class="service-section" aria-labelledby="perfis-atendimento-domiciliar" data-motion-stagger>
+        <h2 class="service-section__title" id="perfis-atendimento-domiciliar" data-motion>
+          Para quem o atendimento domiciliar pode ser útil?
+        </h2>
+        <div class="domiciliar-exams__grid domiciliar-profiles__grid" data-motion>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Idosos</h3>
+            <p>O ultrassom para idosos em casa evita deslocamentos que podem ser cansativos ou exigir uma logística complexa.</p>
+          </div>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Pacientes acamados</h3>
+            <p>O ultrassom para paciente acamado permite realizar diversos exames sem necessidade de transporte até uma clínica.</p>
+          </div>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Pessoas com mobilidade reduzida</h3>
+            <p>Simplifica a realização do exame quando sair de casa representa uma dificuldade.</p>
+          </div>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Pacientes em recuperação</h3>
+            <p>Pode ser uma alternativa quando o deslocamento durante o período de recuperação é inconveniente.</p>
+          </div>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Quem busca comodidade e privacidade</h3>
+            <p>O atendimento domiciliar não precisa estar relacionado a uma limitação física. Também pode ser escolhido simplesmente pela conveniência de realizar o exame em casa.</p>
+          </div>
+        </div>
       </section>
 
       <section class="service-section" aria-labelledby="exames-procedimentos-invasivos" data-motion-stagger>
@@ -76,13 +187,156 @@ const structuredData = serviceStructuredData({
         </aside>
       </section>
 
+      <section class="service-section" aria-labelledby="atendimento-particular-domiciliar" data-motion-stagger>
+        <h2 class="service-section__title" id="atendimento-particular-domiciliar" data-motion>
+          O atendimento é particular?
+        </h2>
+        <div class="service-callout" data-motion>
+          <p>
+            <strong>Sim. Todos os exames domiciliares são realizados de forma particular. Não há atendimento direto por planos de saúde.</strong>
+          </p>
+        </div>
+        <p data-motion>
+          O ultrassom particular domiciliar é realizado de forma individualizada, diretamente pelo médico radiologista, no ambiente escolhido pelo paciente e com horário previamente combinado.
+        </p>
+        <p data-motion>
+          Durante o exame, o médico pode dedicar o tempo necessário à avaliação ultrassonográfica de acordo com a indicação clínica e os achados identificados durante o procedimento.
+        </p>
+        <p data-motion>
+          Esse formato também possibilita oferecer um serviço domiciliar personalizado, sem depender da disponibilidade de uma rede credenciada para deslocamento até a residência.
+        </p>
+      </section>
+
+      <section class="service-section" aria-labelledby="diferenciais-atendimento-domiciliar" data-motion-stagger>
+        <h2 class="service-section__title" id="diferenciais-atendimento-domiciliar" data-motion>
+          Por que realizar o ultrassom domiciliar com o Dr. Victor Mol?
+        </h2>
+        <div class="domiciliar-exams__grid" data-motion>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Realizado pelo próprio médico radiologista</h3>
+            <p>O exame é realizado pessoalmente pelo Dr. Victor Mol.</p>
+          </div>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Atendimento individualizado</h3>
+            <p>O exame é realizado de forma particular e com atendimento individualizado no domicílio.</p>
+          </div>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Equipamento portátil</h3>
+            <p>Utilização de equipamento de ultrassonografia portátil adequado à realização dos exames oferecidos.</p>
+          </div>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Doppler colorido</h3>
+            <p>O Doppler pode ser utilizado nos exames convencionais quando houver indicação.</p>
+          </div>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Laudo médico</h3>
+            <p>O laudo é disponibilizado em até 3 dias úteis após a realização do exame.</p>
+          </div>
+          <div class="domiciliar-exams__card">
+            <h3 class="service-section__subtitle">Comodidade</h3>
+            <p>O paciente realiza o exame sem necessidade de deslocamento até uma clínica.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="service-section" aria-labelledby="regioes-atendimento-domiciliar" data-motion-stagger>
+        <h2 class="service-section__title" id="regioes-atendimento-domiciliar" data-motion>
+          Onde há atendimento domiciliar?
+        </h2>
+        <div class="service-callout" data-motion>
+          <ul class="service-list domiciliar-regions__cities">
+            <li>Niterói</li>
+            <li>Rio de Janeiro</li>
+            <li>São Gonçalo</li>
+            <li>Maricá</li>
+          </ul>
+        </div>
+        <p data-motion>
+          Para realizar seu ultrassom em casa em Niterói ou nas demais cidades atendidas no RJ, consulte a disponibilidade e o valor conforme a localização. Envie pelo WhatsApp uma foto do pedido médico e o bairro ou endereço onde será realizado o exame.
+        </p>
+        <div class="domiciliar-regions__cta" data-motion>
+          <WhatsAppCta variant="hero" label="CONSULTAR ATENDIMENTO NA MINHA REGIÃO" />
+        </div>
+      </section>
+
       <section class="service-section" aria-labelledby="como-funciona-agendamento" data-motion-stagger>
         <h2 class="service-section__title" id="como-funciona-agendamento" data-motion>
-          Como Funciona o Agendamento?
+          Como agendar seu ultrassom domiciliar
         </h2>
-        <p data-motion>
-          Para agendar um ultrassom domiciliar, o paciente deve entrar em contato para que possamos entender suas necessidades específicas. A partir desta informação, organizamos a melhor logística para a realização do exame, sempre assegurando o conforto do paciente sem perder a qualidade diagnóstica que ele merece.
-        </p>
+        <ol class="service-list service-list--ordered domiciliar-booking__steps" data-motion>
+          <li>
+            <h3 class="service-section__subtitle">Envie o pedido médico</h3>
+            <p>Entre em contato pelo WhatsApp e encaminhe uma foto do pedido.</p>
+          </li>
+          <li>
+            <h3 class="service-section__subtitle">Informe a localização</h3>
+            <p>Envie o bairro ou endereço onde o exame será realizado.</p>
+          </li>
+          <li>
+            <h3 class="service-section__subtitle">Consulte valor e disponibilidade</h3>
+            <p>A equipe confirma a possibilidade de realização do exame, o valor e os horários disponíveis.</p>
+          </li>
+          <li>
+            <h3 class="service-section__subtitle">Realização do exame</h3>
+            <p>O Dr. Victor Mol vai até o local combinado para realizar o exame.</p>
+          </li>
+          <li>
+            <h3 class="service-section__subtitle">Receba o laudo</h3>
+            <p>O laudo médico é disponibilizado em até 3 dias úteis.</p>
+          </li>
+        </ol>
+        <div class="domiciliar-booking__cta" data-motion>
+          <WhatsAppCta variant="hero" label="AGENDAR PELO WHATSAPP" />
+        </div>
+      </section>
+      <section class="service-section" aria-labelledby="perguntas-frequentes-domiciliar">
+        <h2 class="service-section__title" id="perguntas-frequentes-domiciliar">Perguntas frequentes</h2>
+        <div class="domiciliar-faq">
+          <details>
+            <summary>Vocês aceitam plano de saúde?</summary>
+            <p>Não. O serviço de ultrassonografia domiciliar é exclusivamente particular.</p>
+          </details>
+          <details>
+            <summary>Por que o atendimento é particular?</summary>
+            <p>O serviço foi estruturado para oferecer atendimento domiciliar individualizado, realizado diretamente pelo médico radiologista e com horário previamente combinado. Por se tratar de um modelo particular de atendimento no domicílio, não trabalhamos diretamente com planos de saúde.</p>
+          </details>
+          <details>
+            <summary>Quais ultrassons podem ser realizados em casa?</summary>
+            <p>Diversos exames podem ser realizados no ambiente domiciliar, incluindo abdome, rins e vias urinárias, tireoide, mamas, pelve, transvaginal, próstata por via abdominal ou transretal, bolsa escrotal, partes moles, parede abdominal e ultrassonografia dermatológica. Em caso de dúvida, envie o pedido pelo WhatsApp.</p>
+          </details>
+          <details>
+            <summary>É possível realizar ultrassom com Doppler em casa?</summary>
+            <p>Sim. O Doppler colorido pode ser utilizado nos exames convencionais quando houver indicação, como em exames da tireoide, transvaginal e bolsa escrotal, entre outros. Em relação aos exames vasculares, é realizado Doppler venoso para investigação de trombose venosa.</p>
+          </details>
+          <details>
+            <summary>É possível fazer ultrassom transvaginal em casa?</summary>
+            <p>Sim. O ultrassom transvaginal domiciliar pode ser realizado inclusive com Doppler quando houver indicação.</p>
+          </details>
+          <details>
+            <summary>É possível fazer ultrassom transretal domiciliar?</summary>
+            <p>Sim. O ultrassom de próstata domiciliar pode ser realizado por via abdominal ou transretal, conforme o exame solicitado no pedido médico.</p>
+          </details>
+          <details>
+            <summary>O exame é realizado pelo próprio médico?</summary>
+            <p>Sim. Os exames são realizados pessoalmente pelo Dr. Victor Mol, médico radiologista.</p>
+          </details>
+          <details>
+            <summary>Atende pacientes idosos e acamados?</summary>
+            <p>Sim. O atendimento domiciliar é especialmente conveniente para idosos, pacientes acamados e pessoas com dificuldade de locomoção.</p>
+          </details>
+          <details>
+            <summary>Em quais regiões há atendimento?</summary>
+            <p>O serviço de ultrassom domiciliar no RJ atende Niterói e, conforme disponibilidade, regiões do Rio de Janeiro, São Gonçalo e Maricá. Para confirmar o atendimento perto de você, informe seu bairro pelo WhatsApp.</p>
+          </details>
+          <details>
+            <summary>Quanto custa o ultrassom domiciliar?</summary>
+            <p>O valor depende do exame solicitado e da localização do atendimento. Envie pelo WhatsApp uma foto do pedido médico e o endereço ou bairro para consultar o valor.</p>
+          </details>
+          <details>
+            <summary>Quando o laudo fica pronto?</summary>
+            <p>O laudo é disponibilizado em até 3 dias úteis após a realização do exame.</p>
+          </details>
+        </div>
       </section>
     </article>
   </div>
@@ -92,3 +346,228 @@ const structuredData = serviceStructuredData({
     text="Agende o ultrassom domiciliar com o Dr. Victor Mol. Estrutura completa, laudo detalhado e atendimento pensado para a sua comodidade."
   />
 </BaseLayout>
+
+<script>
+  import { initDomiciliaryTracking } from '../scripts/domiciliary-tracking.js';
+  initDomiciliaryTracking();
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  document.querySelectorAll<HTMLDetailsElement>('.domiciliar-faq details').forEach((details) => {
+    const summary = details.querySelector('summary');
+    if (!summary) return;
+
+    let animation: Animation | null = null;
+    let expanded = details.open;
+    details.classList.toggle('is-expanded', expanded);
+
+    const finish = () => {
+      animation?.cancel();
+      animation = null;
+      details.open = expanded;
+      details.style.removeProperty('overflow');
+    };
+
+    summary.addEventListener('click', (event) => {
+      event.preventDefault();
+      expanded = !expanded;
+      details.classList.toggle('is-expanded', expanded);
+
+      if (reducedMotion.matches) {
+        finish();
+        return;
+      }
+
+      const startHeight = details.getBoundingClientRect().height;
+      animation?.cancel();
+      details.open = expanded;
+      const endHeight = details.getBoundingClientRect().height;
+
+      // Keep the answer rendered until the closing transition finishes.
+      details.open = true;
+      details.style.overflow = 'clip';
+      animation = details.animate(
+        [{ height: `${startHeight}px` }, { height: `${endHeight}px` }],
+        { duration: 280, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' },
+      );
+      animation.onfinish = finish;
+    });
+
+    reducedMotion.addEventListener('change', () => {
+      if (reducedMotion.matches) finish();
+    });
+    window.addEventListener('resize', () => {
+      if (animation) finish();
+    });
+  });
+</script>
+
+<style>
+  .domiciliar-faq {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-15);
+    min-width: 0;
+  }
+
+  .domiciliar-faq details {
+    box-sizing: border-box;
+    border: 1px solid var(--section-divider-color);
+    border-radius: var(--radius-20);
+    background: color-mix(in srgb, var(--color-primary) 6%, var(--color-background));
+    overflow-wrap: break-word;
+  }
+
+  .domiciliar-faq summary {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-15);
+    list-style: none;
+    padding: var(--sp-20) clamp(20px, 3vw, 30px);
+    border-radius: var(--radius-20);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: var(--text-body-lg);
+    font-weight: 700;
+    line-height: var(--lh-body);
+    color: var(--color-primary);
+  }
+
+  .domiciliar-faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .domiciliar-faq summary::before {
+    content: '';
+    flex: 0 0 8px;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--color-tertiary);
+    border-bottom: 2px solid var(--color-tertiary);
+    transform: rotate(-45deg);
+    transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .domiciliar-faq details.is-expanded > summary::before {
+    transform: rotate(45deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .domiciliar-faq summary::before {
+      transition: none;
+    }
+  }
+
+  .domiciliar-faq summary:focus-visible {
+    outline: 3px solid var(--color-tertiary);
+    outline-offset: 3px;
+  }
+
+  .domiciliar-faq details p {
+    margin: 0;
+    padding: 0 clamp(20px, 3vw, 30px) var(--sp-20);
+  }
+
+  .domiciliar-booking__steps {
+    gap: var(--sp-25);
+  }
+
+  .domiciliar-booking__steps li {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-10);
+  }
+
+  .domiciliar-booking__cta :global(.hero__cta) {
+    max-width: 100%;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .domiciliar-regions__cities {
+    line-height: 1.6;
+  }
+
+  .domiciliar-regions__cta :global(.hero__cta) {
+    max-width: 100%;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .domiciliar-profiles__grid > :last-child {
+    grid-column: 1 / -1;
+  }
+
+  .domiciliar-doppler__cta :global(.hero__cta) {
+    max-width: 100%;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .service-article {
+    gap: clamp(48px, 5.5vw, 72px);
+  }
+
+  .domiciliar-exams__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-20);
+  }
+
+  .domiciliar-exams__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-20);
+    min-width: 0;
+    padding: clamp(20px, 3vw, 30px);
+    border: 1px solid var(--section-divider-color);
+    border-radius: var(--radius-20);
+    background: color-mix(in srgb, var(--color-primary) 6%, var(--color-background));
+  }
+
+  .domiciliar-exams__request {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-20);
+  }
+
+  .domiciliar-exams__request :global(.hero__cta) {
+    max-width: 100%;
+    white-space: normal;
+    text-align: left;
+  }
+
+  @media (max-width: 600px) {
+    .domiciliar-exams__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  :global(.service-hero:has(.service-hero__media--domiciliar) .service-hero__subtitle) {
+    max-width: 42rem;
+  }
+
+  .domiciliar-hero__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-15);
+    margin-top: var(--sp-15);
+    max-width: 100%;
+  }
+
+  .domiciliar-hero__cta :global(.hero__cta) {
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .domiciliar-hero__note {
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    line-height: var(--lh-body);
+    color: rgba(255, 255, 255, 0.82);
+  }
+</style>

@@ -1,17 +1,19 @@
 ---
 import {
-  WHATSAPP_FLOAT_URL,
+  buildWhatsAppUrl,
+  getWhatsAppMessage,
   WHATSAPP_PHONE_DISPLAY,
   WHATSAPP_DEFAULT_MESSAGE,
 } from '../data/whatsapp';
+const message = getWhatsAppMessage(Astro.url.pathname) ?? WHATSAPP_DEFAULT_MESSAGE;
 ---
 
 <a
-  href={WHATSAPP_FLOAT_URL}
+  href={buildWhatsAppUrl(message)}
   class="whatsapp-float"
   target="_blank"
   rel="noopener noreferrer"
-  aria-label={`Conversar no WhatsApp — ${WHATSAPP_PHONE_DISPLAY}. Mensagem: ${WHATSAPP_DEFAULT_MESSAGE}`}
+  aria-label={`Conversar no WhatsApp — ${WHATSAPP_PHONE_DISPLAY}. Mensagem: ${message}`}
 >
   <svg
     class="whatsapp-float__icon"

@@ -1,6 +1,6 @@
 ---
 import DecorativeCircle from './DecorativeCircle.astro';
-import { WHATSAPP_PHONE_DISPLAY, WHATSAPP_URL } from '../data/whatsapp';
+import { WHATSAPP_PHONE_DISPLAY, buildWhatsAppUrl, getWhatsAppMessage } from '../data/whatsapp';
 
 const home = import.meta.env.BASE_URL;
 const sectionHref = (id: string) => `${home}#${id}`;
@@ -80,7 +80,7 @@ const sectionHref = (id: string) => `${home}#${id}`;
         </a>
         <a
           class="footer__contact-link motion-link"
-          href={WHATSAPP_URL}
+          href={buildWhatsAppUrl(getWhatsAppMessage(Astro.url.pathname))}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`WhatsApp ${WHATSAPP_PHONE_DISPLAY}`}

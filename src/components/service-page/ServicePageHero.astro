@@ -3,10 +3,13 @@ import DecorativeCircle from '../DecorativeCircle.astro';
 
 interface Props {
   title: string;
-  subtitle: string;
+  subtitle: string | string[];
   breadcrumbCurrent: string;
   imageSrc?: string;
   imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  imageSrcSet?: string;
   /** Extra class on the visual stage (e.g. square artwork framing). */
   mediaClass?: string;
 }
@@ -17,6 +20,9 @@ const {
   breadcrumbCurrent,
   imageSrc,
   imageAlt = '',
+  imageWidth = 360,
+  imageHeight = 270,
+  imageSrcSet,
   mediaClass = '',
 } = Astro.props;
 
@@ -43,7 +49,10 @@ const hasImage = Boolean(imageSrc);
         </nav>
 
         <h1 class="service-hero__title" id="service-hero-title" data-motion>{title}</h1>
-        <p class="service-hero__subtitle" data-motion>{subtitle}</p>
+        {(Array.isArray(subtitle) ? subtitle : [subtitle]).map((paragraph) => (
+          <p class="service-hero__subtitle" data-motion>{paragraph}</p>
+        ))}
+        <slot />
       </div>
 
       {hasImage ? (
@@ -60,9 +69,10 @@ const hasImage = Boolean(imageSrc);
             <img
               class="service-hero__img"
               src={imageSrc}
+              srcset={imageSrcSet}
               alt={imageAlt}
-              width="360"
-              height="270"
+              width={imageWidth}
+              height={imageHeight}
               sizes="(max-width: 900px) 100vw, 460px"
               loading="eager"
               fetchpriority="high"

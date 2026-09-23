@@ -1,5 +1,5 @@
 ---
-import { WHATSAPP_URL } from '../data/whatsapp';
+import { buildWhatsAppUrl, getWhatsAppMessage } from '../data/whatsapp';
 
 type Variant = 'hero' | 'navbar' | 'contact';
 
@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { variant, label } = Astro.props;
+const whatsappUrl = buildWhatsAppUrl(getWhatsAppMessage(Astro.url.pathname));
 
 const defaultLabels: Record<Variant, string> = {
   hero: 'Quero agendar meu exame',
@@ -23,7 +24,7 @@ const ariaLabel = `${text} (abre no WhatsApp)`;
 {
   variant === 'hero' && (
     <a
-      href={WHATSAPP_URL}
+      href={whatsappUrl}
       class="hero__cta motion-btn"
       target="_blank"
       rel="noopener noreferrer"
@@ -47,7 +48,7 @@ const ariaLabel = `${text} (abre no WhatsApp)`;
 {
   variant === 'navbar' && (
     <a
-      href={WHATSAPP_URL}
+      href={whatsappUrl}
       class="btn-cta motion-btn"
       target="_blank"
       rel="noopener noreferrer"
@@ -71,7 +72,7 @@ const ariaLabel = `${text} (abre no WhatsApp)`;
 {
   variant === 'contact' && (
     <a
-      href={WHATSAPP_URL}
+      href={whatsappUrl}
       class="service-card__contact-btn"
       target="_blank"
       rel="noopener noreferrer"

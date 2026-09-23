@@ -116,3 +116,45 @@ export function serviceStructuredData(options: {
     ],
   };
 }
+
+/** Schema for the domiciliary service, without changing other service pages. */
+export function domiciliaryStructuredData(options: Parameters<typeof serviceStructuredData>[0]) {
+  const pageUrl = absoluteUrl(options.pathname);
+  const base = serviceStructuredData(options);
+  const { worksFor, ...physician } = physicianSchema;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': `${pageUrl}#service`,
+        name: options.name,
+        serviceType: 'Ultrassonografia domiciliar particular',
+        description: options.description,
+        url: pageUrl,
+        image: options.imagePath ? absoluteUrl(options.imagePath) : undefined,
+        provider: { '@id': physicianId },
+        areaServed: ['Niterói', 'Rio de Janeiro', 'São Gonçalo', 'Maricá'].map((name) => ({
+          '@type': 'City', name,
+          containedInPlace: { '@type': 'State', name: 'Rio de Janeiro' },
+        })),
+        mainEntityOfPage: { '@id': `${pageUrl}#webpage` },
+      },
+      {
+        '@type': 'MedicalWebPage',
+        '@id': `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: options.name,
+        description: options.description,
+        inLanguage: SITE_LANGUAGE,
+        mainEntity: { '@id': `${pageUrl}#service` },
+        about: { '@id': physicianId },
+      },
+      base['@graph'][1],
+      {
+        ...physician,
+        medicalSpecialty: 'https://schema.org/Radiography',
+      },
+    ],
+  };
+}
